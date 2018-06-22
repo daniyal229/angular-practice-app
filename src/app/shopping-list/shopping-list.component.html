@@ -2,14 +2,11 @@
 	<div class="col s12 m12 l12">
 		<app-shopping-edit></app-shopping-edit>
 		<div class="divider"></div>
-		<!-- <ul class="collection recipe-collection">
-		    <li class="collection-item recipe-collection-item avatar" *ngFor="let recipe of recipes">
-		      <img src="{{recipe.imageSrc}}" alt="" class="circle">
-		      <span class="title">{{recipe.name}}</span>
-		      <p>
-		      	{{recipe.description}}
-		      </p>
+		<ul class="collection recipe-collection">
+		    <li class="collection-item recipe-collection-item avatar" *ngFor="let ingredient of ingredients">
+		      <img src="{{ingredient.imageSrc}}" class="responsive-img circle" />
+		      <span class="title">{{ingredient.name}} ({{ingredient.amount}})</span>
 		    </li>
-	    </ul> -->
+	    </ul>
 	</div>
 </div>
