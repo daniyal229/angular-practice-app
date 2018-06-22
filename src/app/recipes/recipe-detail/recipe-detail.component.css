@@ -1,0 +1,7 @@
+.recipe-image{
+	border-radius: 10px;
+}
+.recipe-description{
+	height: 250px;
+	overflow: auto;
+}

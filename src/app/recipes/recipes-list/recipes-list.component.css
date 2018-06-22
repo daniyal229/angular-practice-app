@@ -1,0 +1,8 @@
+.recipe-collection{
+	height: 400px;
+	overflow-y: auto;
+}
+
+.recipe-collection > .recipe-collection-item {
+	cursor: pointer;
+}
