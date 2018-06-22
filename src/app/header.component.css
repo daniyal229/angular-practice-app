@@ -1,0 +1,15 @@
+.logo {
+	height: 40px;
+	margin-left: 10px;
+}
+
+.logo > img {
+	height: inherit;
+    position: relative;
+    top: 6px;
+}
+
+.logo > span {
+	display: inline;
+    margin-left: 14px;
+}
