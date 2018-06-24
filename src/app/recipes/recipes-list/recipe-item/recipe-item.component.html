@@ -1,4 +1,4 @@
-<li class="collection-item recipe-collection-item avatar">
+<li style="cursor: pointer;"  (click)="selectRecipeItem(recipe,index)" class="collection-item recipe-collection-item avatar">
   <img src="{{recipe.imageSrc}}" alt="" class="circle">
   <span class="title">{{recipe.name}}</span>
   <p>

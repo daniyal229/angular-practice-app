@@ -10,14 +10,42 @@ import { Ingredient } from '../models/ingredient.model';
 export class ShoppingListComponent implements OnInit {
 
   ingredients: Ingredient[] = [
-    new Ingredient("Tomatoes", 3, "assets/tomato.png"),
-    new Ingredient("Onions", 3,"assets/onion.png"),
-    new Ingredient("Peanuts", 3,"assets/peanut.png")
+    new Ingredient("Tomatoes", 3, "/assets/tomato.png"),
+    new Ingredient("Onions", 3,"/assets/onion.png"),
+    new Ingredient("Peanuts", 3,"/assets/peanut.png")
   ];
 
   constructor() { }
 
   ngOnInit() {
+  }
+
+  removeIngredient(removedIngredient: Ingredient) {
+    let index: number = -1;
+    for(let i in this.ingredients){
+      if(this.ingredients[i].name.toLowerCase() == removedIngredient.name.toLowerCase()){
+         index = parseInt(i);
+         break;
+      } 
+    }
+    if (index != -1){
+      this.ingredients.splice(index, 1);
+    }
+  }
+
+  addIngredient(newIngredient: Ingredient) {  
+    debugger;
+    let ingredientExists = false;
+    for(let i in this.ingredients){
+      if (this.ingredients[i].name.toLowerCase() == newIngredient.name.toLowerCase()) {
+         this.ingredients[i].amount = this.ingredients[i].amount + newIngredient.amount;
+         ingredientExists = true;
+         break;
+      }
+    }
+    if(!!!ingredientExists){
+      this.ingredients.push(newIngredient);
+    }
   }
 
 }

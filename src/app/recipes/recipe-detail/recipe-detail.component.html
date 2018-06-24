@@ -1,14 +1,11 @@
 <div class="row">
 	<div class="col s4 l4 m4">
-		<h4>Recipe Name</h4>
-		<p class="recipe-description">Recipe Description</p>
+		<h4>{{recipe.name}}</h4>
+		<p class="recipe-description">{{recipe.description}}</p>
 		<div class="row">
 	      <div class="col s12 l12 m12">
 	      	<ul>
-	      		<li>Ingredient</li>
-	      		<li>Ingredient</li>
-	      		<li>Ingredient</li>
-	      		<li>Ingredient</li>
+	      		<li *ngFor="let ingredient of recipe.ingredients">{{ingredient.name}}</li>
 	      	</ul>
 	      </div>
 	    </div>
@@ -22,6 +19,6 @@
 	    </div>
 	</div>
 	<div class="col s8 l8 m8">
-		<img alt="" class="responsive-img recipe-image" src="https://myheartbeets.com/wp-content/uploads/2018/02/instant-pot-chicken-biryani-pressure-cooker-indian.jpg">
+		<img alt="" class="responsive-img recipe-image" src="{{recipe.imageSrc}}">
 	</div>
 </div>

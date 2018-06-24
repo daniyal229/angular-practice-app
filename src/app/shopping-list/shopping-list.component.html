@@ -1,6 +1,6 @@
 <div class="row">
 	<div class="col s12 m12 l12">
-		<app-shopping-edit></app-shopping-edit>
+		<app-shopping-edit (ingredientAdded)="addIngredient($event)" (ingredientRemoved)="removeIngredient($event)"></app-shopping-edit>
 		<div class="divider"></div>
 		<ul class="collection recipe-collection">
 		    <li class="collection-item recipe-collection-item avatar" *ngFor="let ingredient of ingredients">
