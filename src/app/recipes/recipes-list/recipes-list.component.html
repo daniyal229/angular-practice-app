@@ -7,15 +7,8 @@
 <div class="row">
 	<div class="col s12 m12 l12">
 		<ul class="collection recipe-collection">
-		    <li class="collection-item recipe-collection-item avatar" *ngFor="let recipe of recipes">
-		      <img src="{{recipe.imageSrc}}" alt="" class="circle">
-		      <span class="title">{{recipe.name}}</span>
-		      <p>
-		      	{{recipe.description}}
-		      </p>
-		    </li>
+			<app-recipe-item *ngFor="let recipe of recipes" [recipe]="recipe"></app-recipe-item>
 	    </ul>
-		<!-- <app-recipe-item></app-recipe-item> -->
 	</div>
 </div>
 

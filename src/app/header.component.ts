@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output, Input } from '@angular/core';
 
 @Component({
   selector: 'app-header',
@@ -7,9 +7,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
+  @Output() displayRecipes = new EventEmitter<any>()
+  @Output() displayShoppingList = new EventEmitter<any>()
+  @Input() recipesVisible: boolean;
+  
   constructor() { }
 
   ngOnInit() {
+  }
+
+  onDisplayRecipes(){
+  	debugger;
+  	this.displayRecipes.emit('');
+  }
+
+  onDisplayShoppingList() {
+  	this.displayShoppingList.emit('');
   }
 
 }

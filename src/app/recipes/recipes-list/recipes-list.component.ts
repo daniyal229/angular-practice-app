@@ -9,13 +9,10 @@ import { Recipe } from '../../models/recipe.model';
 export class RecipesListComponent implements OnInit {
 
   recipes: Recipe[] = [
-    new Recipe("Biryani","A dish of meat and rice","https://myheartbeets.com/wp-content/uploads/2018/02/instant-pot-chicken-biryani-pressure-cooker-indian.jpg"),
-    new Recipe("Biryani","A dish of meat and rice","https://myheartbeets.com/wp-content/uploads/2018/02/instant-pot-chicken-biryani-pressure-cooker-indian.jpg"),
-    new Recipe("Biryani","A dish of meat and rice","https://myheartbeets.com/wp-content/uploads/2018/02/instant-pot-chicken-biryani-pressure-cooker-indian.jpg"),
-    new Recipe("Biryani","A dish of meat and rice","https://myheartbeets.com/wp-content/uploads/2018/02/instant-pot-chicken-biryani-pressure-cooker-indian.jpg"),
-    new Recipe("Biryani","A dish of meat and rice","https://myheartbeets.com/wp-content/uploads/2018/02/instant-pot-chicken-biryani-pressure-cooker-indian.jpg"),
-    new Recipe("Biryani","A dish of meat and rice","https://myheartbeets.com/wp-content/uploads/2018/02/instant-pot-chicken-biryani-pressure-cooker-indian.jpg"),
-    new Recipe("Biryani","A dish of meat and rice","https://myheartbeets.com/wp-content/uploads/2018/02/instant-pot-chicken-biryani-pressure-cooker-indian.jpg"),
+    new Recipe("Biryani","A dish of meat and rice","/assets/biryani.png"),
+    new Recipe("Chicken Karahi","A dish of meat and rice","/assets/karahi.png"),
+    new Recipe("Nihari","A dish of meat and rice","/assets/nihari.jpg"),
+    new Recipe("Noodles","A dish of meat and rice","/assets/noodles.png"),
   ];
 
   constructor() { }

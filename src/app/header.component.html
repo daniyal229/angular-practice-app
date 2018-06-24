@@ -5,8 +5,8 @@
 			<span>Recipe Book</span>
 		</a>
 		<ul id="nav-mobile" class="right hide-on-med-and-down">
-			<li><a href="#">Shopping List</a></li>
-			<li><a href="#">Recipes</a></li>
+			<li (click)="onDisplayShoppingList()" [ngClass]="{active: !!!recipesVisible}"><a href="#">Shopping List</a></li>
+			<li (click)="onDisplayRecipes()" [ngClass]="{active: !!recipesVisible}"><a href="#">Recipes</a></li>
 			<li>
 				<a class='dropdown-trigger btn' materialize="dropdown" href='#' data-target='dropdown1'>Drop Me!</a>
 	        </li>
