@@ -24,7 +24,11 @@ export class ShoppingEditComponent implements OnInit {
 
   removeIngredient() {
     if (!!this.selectedIngredient) {
-      this.ingredientRemoved.emit(this.selectedIngredient);
+      if (confirm('Are you sure you want to remove this ingredient from your groceries list?')) {
+        this.ingredientRemoved.emit(this.selectedIngredient);
+      }
+    } else {
+      alert('Please select an ingredient first.');
     }
   }
 
