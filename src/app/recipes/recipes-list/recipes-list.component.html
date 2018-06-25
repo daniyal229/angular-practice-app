@@ -7,7 +7,7 @@
 <div class="row">
 	<div class="col s12 m12 l12">
 		<ul class="collection recipe-collection">
-			<app-recipe-item (recipeItemSelected)="selectRecipe($event)" *ngFor="let recipe of recipes" 
+			<app-recipe-item (recipeItemSelected)="selectRecipe($event)" *ngFor="let recipe of recipeList.getRecipes()" 
 			[recipe]="recipe"></app-recipe-item>
 	    </ul>
 	</div>
