@@ -10,40 +10,50 @@ import { Ingredient } from '../models/ingredient.model';
 export class ShoppingListComponent implements OnInit {
 
   ingredients: Ingredient[] = [
-    new Ingredient("Tomatoes", 3, "/assets/tomato.png"),
-    new Ingredient("Onions", 3,"/assets/onion.png"),
-    new Ingredient("Peanuts", 3,"/assets/peanut.png")
+    new Ingredient('Tomatoes', 3, '/assets/tomato.png'),
+    new Ingredient('Onions', 3, '/assets/onion.png'),
+    new Ingredient('Peanuts', 3, '/assets/peanut.png')
   ];
+
+  selectedIngredient;
 
   constructor() { }
 
   ngOnInit() {
   }
 
-  removeIngredient(removedIngredient: Ingredient) {
-    let index: number = -1;
-    for(let i in this.ingredients){
-      if(this.ingredients[i].name.toLowerCase() == removedIngredient.name.toLowerCase()){
-         index = parseInt(i);
-         break;
-      } 
-    }
-    if (index != -1){
-      this.ingredients.splice(index, 1);
-    }
+  clearSelectedIngredient() {
+    this.selectedIngredient = '';
   }
 
-  addIngredient(newIngredient: Ingredient) {  
-    debugger;
+  setSelectedIngredient(ingredient: Ingredient) {
+    this.selectedIngredient = ingredient;
+  }
+
+  removeIngredient(removedIngredient: Ingredient) {
+    let index = -1;
+    for (const i in this.ingredients) {
+      if (this.ingredients[i].name.toLowerCase() === removedIngredient.name.toLowerCase()) {
+         index = parseInt(i, 10);
+         break;
+      }
+    }
+    if (index !== -1) {
+      this.ingredients.splice(index, 1);
+    }
+    this.selectedIngredient = '';
+  }
+
+  addIngredient(newIngredient: Ingredient) {
     let ingredientExists = false;
-    for(let i in this.ingredients){
-      if (this.ingredients[i].name.toLowerCase() == newIngredient.name.toLowerCase()) {
+    for (const i in this.ingredients) {
+      if (this.ingredients[i].name.toLowerCase() === newIngredient.name.toLowerCase()) {
          this.ingredients[i].amount = this.ingredients[i].amount + newIngredient.amount;
          ingredientExists = true;
          break;
       }
     }
-    if(!!!ingredientExists){
+    if (!!!ingredientExists) {
       this.ingredients.push(newIngredient);
     }
   }

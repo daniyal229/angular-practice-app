@@ -17,7 +17,6 @@ export class HeaderComponent implements OnInit {
   }
 
   onDisplayRecipes(){
-  	debugger;
   	this.displayRecipes.emit('');
   }
 

@@ -12,6 +12,7 @@ export class ShoppingEditComponent implements OnInit {
 
   @Output() ingredientAdded = new EventEmitter<Ingredient>();
   @Output() ingredientRemoved = new EventEmitter<Ingredient>();
+  @Output() clearSelectedIngredient = new EventEmitter<any>();
   @Input() selectedIngredient;
   @ViewChild('ingredientName') ingredientNameInput;
   @ViewChild('ingredientAmount') ingredientAmountInput;
@@ -21,20 +22,26 @@ export class ShoppingEditComponent implements OnInit {
   ngOnInit() {
   }
 
-  removeIngredient(){
-  	if (!!this.selectedIngredient){
-  	   this.ingredientRemoved.emit(this.selectedIngredient);
-  	   this.selectedIngredient = '';
-  	}
+  removeIngredient() {
+    if (!!this.selectedIngredient) {
+      this.ingredientRemoved.emit(this.selectedIngredient);
+    }
   }
 
-  addIngredient(){
-  	if(!!this.ingredientNameInput.nativeElement.value && !!this.ingredientAmountInput.nativeElement.value){
-  	   let ingredient = new Ingredient(this.ingredientNameInput.nativeElement.value,parseInt(this.ingredientAmountInput.nativeElement.value));
-  	   this.ingredientAdded.emit(ingredient);
-  	} else {
-  	  alert("Please fill in ingredient name and amount.");
-  	}
+  clear() {
+    this.clearSelectedIngredient.emit('');
+  }
+
+  addIngredient() {
+    if (!!this.ingredientNameInput.nativeElement.value && !!this.ingredientAmountInput.nativeElement.value) {
+      const ingredient = new Ingredient(this.ingredientNameInput.nativeElement.value,
+        parseInt(this.ingredientAmountInput.nativeElement.value, 10));
+      this.ingredientAdded.emit(ingredient);
+      this.ingredientNameInput.nativeElement.value = '';
+      this.ingredientAmountInput.nativeElement.value = '';
+    } else {
+      alert('Please fill in ingredient name and amount.');
+    }
   }
 
 }

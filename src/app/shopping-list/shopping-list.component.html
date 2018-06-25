@@ -1,9 +1,9 @@
 <div class="row">
 	<div class="col s12 m12 l12">
-		<app-shopping-edit (ingredientAdded)="addIngredient($event)" (ingredientRemoved)="removeIngredient($event)"></app-shopping-edit>
+		<app-shopping-edit (ingredientAdded)="addIngredient($event)" (ingredientRemoved)="removeIngredient($event)" (clearSelectedIngredient)="clearSelectedIngredient()" [selectedIngredient]="selectedIngredient"></app-shopping-edit>
 		<div class="divider"></div>
-		<ul class="collection recipe-collection">
-		    <li class="collection-item recipe-collection-item avatar" *ngFor="let ingredient of ingredients">
+		<ul class="collection recipe-collection" *ngIf="!!ingredients && ingredients.length > 0">
+		    <li class="collection-item recipe-collection-item avatar cursor-pointer" *ngFor="let ingredient of ingredients" (click)="setSelectedIngredient(ingredient)" [ngClass]="{active: !!selectedIngredient && selectedIngredient.name == ingredient.name}">
 		      <img src="{{ingredient.imageSrc}}" class="responsive-img circle" />
 		      <span class="title">{{ingredient.name}} ({{ingredient.amount}})</span>
 		    </li>
