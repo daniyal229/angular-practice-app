@@ -23,7 +23,7 @@ export class RecipeListService {
   }
 
   public getRecipe(id: number) {
-    let selectedRecipe: Recipe | string = '';
+    let selectedRecipe: any = '';
     for (const recipe of this.recipes){
       if (recipe.id === id) {
         selectedRecipe = recipe;
@@ -31,6 +31,32 @@ export class RecipeListService {
       }
     }
     return selectedRecipe;
+  }
+
+  public removeRecipe(id: number){
+    let selectedRecipeIndex: number = -1;
+    let iterator: number = 0;
+    for (const recipe of this.recipes){
+      if (recipe.id === id) {
+        selectedRecipeIndex = iterator;
+        break;
+      }
+      iterator = iterator + 1;
+    }
+    if (selectedRecipeIndex !== -1) {
+      this.recipes.splice(selectedRecipeIndex,1)
+    }
+  }
+
+  public addRecipe(recipe: Recipe) {
+    let retrievedRecipe : any = this.getRecipe(recipe.id);
+    if(!!retrievedRecipe){
+      for(let property of ['name','description','ingredients', 'imageSrc']){
+        retrievedRecipe[property] = recipe[property]
+      }
+    } else {
+      this.recipes.push(recipe);
+    }
   }
 
   constructor() { }

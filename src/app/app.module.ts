@@ -14,6 +14,7 @@ import { ShoppingEditComponent } from './shopping-list/shopping-edit/shopping-ed
 import { ActiveOnHoverDirective } from './directives/active-on-hover.directive';
 import { DropdownDirective } from './directives/dropdown.directive';
 import { AppRoutingModule } from './app-routing.module';
+import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import { AppRoutingModule } from './app-routing.module';
     RecipeItemComponent,
     ShoppingEditComponent,
     ActiveOnHoverDirective,
-    DropdownDirective
+    DropdownDirective,
+    RecipeEditComponent,
   ],
   imports: [
     BrowserModule,

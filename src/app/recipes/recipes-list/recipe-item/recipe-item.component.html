@@ -1,8 +1,10 @@
-<li style="cursor: pointer;"  class="collection-item recipe-collection-item avatar">
-  <img src="{{recipe.imageSrc}}" alt="" class="circle">
-  <span class="title">{{recipe.name}}</span>
-  <p>
-  	{{recipe.description}}
-  </p>
+<li style="cursor: pointer;"  class="collection-item recipe-collection-item avatar" routerLinkActive="active">
+  <a style="color: unset;'" [routerLink]="['/recipes',recipe.id]">
+	  <img src="{{recipe.imageSrc}}" alt="" class="circle">
+	  <span class="title">{{recipe.name}}</span>
+	  <p>
+	  	{{recipe.description}}
+	  </p>
+  </a>
 </li>
 <li class="divider"></li>
