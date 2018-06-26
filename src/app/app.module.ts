@@ -13,6 +13,8 @@ import { RecipeItemComponent } from './recipes/recipes-list/recipe-item/recipe-i
 import { ShoppingEditComponent } from './shopping-list/shopping-edit/shopping-edit.component';
 import { ActiveOnHoverDirective } from './directives/active-on-hover.directive';
 import { DropdownDirective } from './directives/dropdown.directive';
+import { AppRoutingModule } from './app-routing.module';
+
 
 @NgModule({
   declarations: [
@@ -31,7 +33,8 @@ import { DropdownDirective } from './directives/dropdown.directive';
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

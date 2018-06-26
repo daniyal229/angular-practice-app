@@ -1,5 +1,4 @@
-<app-header (displayRecipes)="showRecipes($event)" (displayShoppingList)="showShoppingList($event)" [recipesVisible]="recipesVisible"></app-header>
+<app-header></app-header>
 <div class="container-fluid main">
-	<app-recipes *ngIf="!!recipesVisible"></app-recipes>
-	<app-shopping-list *ngIf="!!!recipesVisible"></app-shopping-list>
+	<router-outlet></router-outlet>
 </div>

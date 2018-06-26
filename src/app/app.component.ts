@@ -9,17 +9,17 @@ import { RecipeListService } from './services/recipe-list.service';
   providers: [ShoppingListService, RecipeListService]
 })
 export class AppComponent {
-   
+
    constructor(public shoppingList: ShoppingListService, public recipeList: RecipeListService) { }
-   
+
    recipesVisible = true;
 
    showRecipes(data: any) {
-   	  this.recipesVisible = true;
+    this.recipesVisible = true;
    }
 
    showShoppingList(data: any) {
-   	  this.recipesVisible = false;
+    this.recipesVisible = false;
    }
 
 }
