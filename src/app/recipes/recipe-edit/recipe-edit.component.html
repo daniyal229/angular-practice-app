@@ -1,24 +1,27 @@
 <div class="row">
 	<h4>{{!!isNewRecipe ? 'Add Recipe' : 'Update Recipe'}}</h4>
-	<form class="col s12">
+	<form class="col s12" (ngSubmit)="addOrUpdateRecipe(recipeForm)" #recipeForm="ngForm">
+	  <input type="hidden" ngModel ngModelGroup="recipe" name="id" />
 	  <div class="row">
 	    <div class="input-field col s12">
-	      <input placeholder="Name" name="recipe[name]" id="name" type="text" class="validate" [(ngModel)]="recipe.name">
+	      <input name="name" id="name" type="text" class="validate" ngModel required ngModelGroup="recipe">
+	      <label for="name">Name</label>
+        </div>
+	  </div>
+	  <div class="row">
+	    <div class="input-field col s12">	
+	      <textarea placeholder="Please type in a description here ...." name="description" id="description"  ngModel required ngModelGroup="recipe"></textarea>
 	    </div>
 	  </div>
 	  <div class="row">
 	    <div class="input-field col s12">
-	      <textarea placeholder="Description" name="recipe[description]" [(ngModel)]="recipe.description"></textarea>
+	      <label for="image_link">Image Link</label> 	
+	      <input id="image_link" name="imageSrc" type="text" class="validate" ngModel required ngModelGroup="recipe">
 	    </div>
 	  </div>
 	  <div class="row">
 	    <div class="input-field col s12">
-	      <input placeholder="Image" id="name" name="recipe[imageSrc]" type="text" class="validate" [(ngModel)]="recipe.imageSrc">
-	    </div>
-	  </div>
-	  <div class="row">
-	    <div class="input-field col s12">
-	      <button class="btn btn-green" (click)="addOrUpdateRecipe(recipe)">Save</button>
+	      <button class="btn btn-green" type="submit" [disabled]="recipeForm.invalid">Save</button>
 	    </div>
 	  </div>
 	</form>

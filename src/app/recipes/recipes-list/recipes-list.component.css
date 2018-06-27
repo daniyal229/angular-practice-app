@@ -1,6 +1,7 @@
 .recipe-collection{
-	height: 400px;
+	height: 342px;
 	overflow-y: auto;
+	border-bottom: none;
 }
 
 .recipe-collection > .recipe-collection-item {
