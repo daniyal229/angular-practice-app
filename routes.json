@@ -1,0 +1,5 @@
+{
+    "/recipes": "/recipes",
+    "/recipes/:id/ingredients": "/recipes?_embed=ingredients",
+    "/recipes\\?id=:id": "/recipes/:id"
+  }

@@ -1,36 +1,31 @@
+import 'rxjs/Rx';
 import { Recipe } from '../models/recipe.model';
 import { Ingredient } from '../models/ingredient.model';
+import { Injectable } from '@angular/core';
+import { Http, Response } from '@angular/http';
+import { Observable } from 'rxjs';
 
+
+@Injectable()
 export class RecipeListService {
 
-  private recipes: Recipe[] = [
-    new Recipe(1, 'Biryani', 'A dish of meat and rice', '/assets/biryani.png',
-     [
-       new Ingredient('Chicken', 1),
-       new Ingredient('Rice', 5),
-       new Ingredient('Tomatoes', 10),
-       new Ingredient('Garlic', 10),
-       new Ingredient('Onions', 5)
-     ]
-    ),
-    new Recipe(2, 'Chicken Karahi', 'A dish of meat and rice', '/assets/karahi.png'),
-    new Recipe(3, 'Nihari', 'A dish of meat and rice', '/assets/nihari.jpg'),
-    new Recipe(4, 'Noodles', 'A dish of meat and rice', '/assets/noodles.png'),
-  ];
+  private recipes: Recipe[] = [];
+  private baseUrl = "http://localhost:3000";
 
-  public getRecipes(): Recipe[] {
-    return this.recipes;
+  public getRecipes(): Observable<Response> {
+    return this.http.get(this.baseUrl+"/recipes").map(
+      (response: Response) => {
+         return response.json();
+      }
+    );
   }
 
   public getRecipe(id: number) {
-    let selectedRecipe: any = '';
-    for (const recipe of this.recipes){
-      if (recipe.id === id) {
-        selectedRecipe = recipe;
-        break;
+    return this.http.get(this.baseUrl+"/recipes/"+id).map(
+      (response: Response) => {
+         return response.json();
       }
-    }
-    return selectedRecipe;
+    );
   }
 
   public removeRecipe(id: number){
@@ -59,5 +54,7 @@ export class RecipeListService {
     }
   }
 
-  constructor() { }
+  constructor(private http: Http) { 
+    
+  }
 }

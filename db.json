@@ -1,0 +1,25 @@
+{
+    "recipes": [
+        {"id": 1, "name":"Biryani", "description":"A dish composed of rice and meat", "imageSrc": "/assets/biryani.png",
+            "ingredients": [
+                {"id": 1, "name" : "tomatoes", "amount": 10},
+                {"id": 2, "name" : "onion", "amount": 20},
+                {"id": 3, "name" : "garlic", "amount": 30}
+            ]
+        },
+        {"id": 2, "name":"Karahi", "description":"A meat dish", "imageSrc": "/assets/karahi.png",
+            "ingredients": [
+                {"id": 1, "name" : "tomatoes", "amount": 1},
+                {"id": 2, "name" : "onion", "amount": 2},
+                {"id": 3, "name" : "garlic", "amount": 3}
+            ]
+        },
+        {"id": 3, "name":"Custard", "description":"A milk dish", "imageSrc": "link",
+            "ingredients": [
+                {"id": 1, "name" : "tomatoes", "amount": 1},
+                {"id": 2, "name" : "onion", "amount": 2},
+                {"id": 3, "name" : "garlic", "amount": 311}
+            ]
+        }
+    ]
+}

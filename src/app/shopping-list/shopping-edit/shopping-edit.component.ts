@@ -38,7 +38,7 @@ export class ShoppingEditComponent implements OnInit {
 
   addIngredient() {
     if (!!this.ingredientNameInput.nativeElement.value && !!this.ingredientAmountInput.nativeElement.value) {
-      const ingredient = new Ingredient(this.ingredientNameInput.nativeElement.value,
+      const ingredient = new Ingredient(Math.floor(Math.random()*100 + 1),this.ingredientNameInput.nativeElement.value,
         parseInt(this.ingredientAmountInput.nativeElement.value, 10));
       this.ingredientAdded.emit(ingredient);
       this.ingredientNameInput.nativeElement.value = '';
