@@ -20,13 +20,11 @@ export class RecipeEditComponent implements OnInit {
   constructor(private route: ActivatedRoute, private RecipeListService: RecipeListService) { }
 
   ngOnInit() {
-    debugger
     this.isNewRecipe = (this.route.snapshot.routeConfig.path === 'new');
     if (!!!this.isNewRecipe) {
       this.route.params.subscribe(
         (params: Params) => {
-          this.recipe = this.RecipeListService.getRecipe(+params['id']);
-          this.recipeForm.value.recipe = this.recipe;
+          this.recipe = $.extend({},this.RecipeListService.getRecipe(+params['id']));
         }
       );
     } else {
@@ -35,6 +33,7 @@ export class RecipeEditComponent implements OnInit {
   }
 
   addOrUpdateRecipe(recipeForm: NgForm){
-    debugger
+    let recipe = recipeForm.value.recipe
+    this.RecipeListService.addRecipe(new Recipe(recipe.id, recipe.name, recipe.description, recipe.imageSrc))
   }
 }

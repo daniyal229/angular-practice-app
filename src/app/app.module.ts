@@ -15,6 +15,7 @@ import { ActiveOnHoverDirective } from './directives/active-on-hover.directive';
 import { DropdownDirective } from './directives/dropdown.directive';
 import { AppRoutingModule } from './app-routing.module';
 import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component';
+import { ElipsisPipe } from './pipes/elipsis.pipe';
 
 
 @NgModule({
@@ -31,6 +32,7 @@ import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component
     ActiveOnHoverDirective,
     DropdownDirective,
     RecipeEditComponent,
+    ElipsisPipe,
   ],
   imports: [
     BrowserModule,
