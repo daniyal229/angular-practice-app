@@ -4,6 +4,7 @@ import { NgForm } from '@angular/forms';
 import { Recipe } from '../../models/recipe.model';
 import { RecipeListService } from '../../services/recipe-list.service';
 import $ from 'jquery';
+import { Response } from '@angular/http';
 
 @Component({
   selector: 'app-recipe-edit',
@@ -34,6 +35,10 @@ export class RecipeEditComponent implements OnInit {
 
   addOrUpdateRecipe(recipeForm: NgForm){
     let recipe = recipeForm.value.recipe
-    this.RecipeListService.addRecipe(new Recipe(recipe.id, recipe.name, recipe.description, recipe.imageSrc))
+    this.RecipeListService.addRecipe(new Recipe(recipe.id, recipe.name, recipe.description, recipe.imageSrc)).subscribe(
+      (response: Response) => {
+        console.log("Recipe has been added");
+      }
+    );
   }
 }

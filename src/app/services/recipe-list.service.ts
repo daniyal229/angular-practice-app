@@ -1,7 +1,11 @@
 import { Recipe } from '../models/recipe.model';
 import { Ingredient } from '../models/ingredient.model';
+import { Injectable } from '@angular/core';
+import { Http, Response } from '@angular/http';
 
+@Injectable()
 export class RecipeListService {
+
 
   private recipes: Recipe[] = [
     new Recipe(1, 'Biryani', 'A dish of meat and rice', '/assets/biryani.png',
@@ -17,6 +21,19 @@ export class RecipeListService {
     new Recipe(3, 'Nihari', 'A dish of meat and rice', '/assets/nihari.jpg'),
     new Recipe(4, 'Noodles', 'A dish of meat and rice', '/assets/noodles.png'),
   ];
+
+  public saveRecipes(){
+    return this.http.put("https://recipebook-3e9c5.firebaseio.com/recipes.json",this.recipes);
+  }
+
+  public fetchRecipes(){
+     this.http.get("https://recipebook-3e9c5.firebaseio.com/recipes.json").subscribe(
+       (response: Response) => {
+         let recipes: Recipe[] = response.json();
+         this.recipes = recipes || [];
+       }
+     )
+  }
 
   public getRecipes(): Recipe[] {
     return this.recipes;
@@ -57,7 +74,10 @@ export class RecipeListService {
     } else {
       this.recipes.push(recipe);
     }
+    return this.saveRecipes()
   }
 
-  constructor() { }
+  constructor(private http: Http) {
+    this.fetchRecipes();
+  }
 }

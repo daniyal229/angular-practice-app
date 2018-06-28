@@ -2,7 +2,7 @@
 	<div class="nav-wrapper grey">
 		<a class="brand-logo logo" href="#">
 			<img src="../assets/recipe.png" />
-			<span>{{'Recipe Book' | elipsis:3}}</span>
+			<span>{{'Recipe Book' | elipsis:30}}</span>
 		</a>
 		<ul id="nav-mobile" class="right hide-on-med-and-down">
 			<li routerLinkActive="active"><a routerLink="/recipes">Recipes</a></li>
@@ -14,8 +14,8 @@
 			  
 		</ul>
 		<ul id='dropdown1' class='dropdown-content'>
-		    <li class="cursor-pointer"><a>Save Data</a></li>
-		    <li class="cursor-pointer"><a>Fetch Data</a></li>
+		    <li class="cursor-pointer" (click)="saveData()"><a>Save Data</a></li>
+		    <li class="cursor-pointer" (click)="fetchData()"><a>Fetch Data</a></li>
 		</ul>
 	</div>
 </nav>
