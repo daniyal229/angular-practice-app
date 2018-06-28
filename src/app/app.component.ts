@@ -1,6 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ShoppingListService } from './services/shopping-list.service';
 import { RecipeListService } from './services/recipe-list.service';
+import * as firebase from 'firebase';
+import { AuthService } from './services/auth.service';
+import { AuthGuardService } from './services/auth-guard.service';
 
 @Component({
   selector: 'app-root',
@@ -8,7 +11,7 @@ import { RecipeListService } from './services/recipe-list.service';
   styleUrls: ['./app.component.css'],
   providers: [ShoppingListService, RecipeListService]
 })
-export class AppComponent {
+export class AppComponent implements OnInit{
 
    constructor(public shoppingList: ShoppingListService, public recipeList: RecipeListService) { }
 
@@ -20,6 +23,17 @@ export class AppComponent {
 
    showShoppingList(data: any) {
     this.recipesVisible = false;
+   }
+
+   ngOnInit() {
+      firebase.initializeApp({
+        apiKey: "AIzaSyAxt3jDkrymncrvb_qZRfZ-nrec-r1cPXg",
+        authDomain: "recipebook-3e9c5.firebaseapp.com",
+        databaseURL: "https://recipebook-3e9c5.firebaseio.com",
+        projectId: "recipebook-3e9c5",
+        storageBucket: "recipebook-3e9c5.appspot.com",
+        messagingSenderId: "775665832050"
+      })
    }
 
 }

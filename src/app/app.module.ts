@@ -16,6 +16,10 @@ import { DropdownDirective } from './directives/dropdown.directive';
 import { AppRoutingModule } from './app-routing.module';
 import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component';
 import { ElipsisPipe } from './pipes/elipsis.pipe';
+import { SignUpComponent } from './auth/sign-up/sign-up.component';
+import { SignInComponent } from './auth/sign-in/sign-in.component';
+import { AuthService } from './services/auth.service';
+import { AuthGuardService } from './services/auth-guard.service';
 
 
 @NgModule({
@@ -33,6 +37,8 @@ import { ElipsisPipe } from './pipes/elipsis.pipe';
     DropdownDirective,
     RecipeEditComponent,
     ElipsisPipe,
+    SignUpComponent,
+    SignInComponent,
   ],
   imports: [
     BrowserModule,
@@ -40,7 +46,7 @@ import { ElipsisPipe } from './pipes/elipsis.pipe';
     HttpModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [AuthGuardService, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -2,6 +2,7 @@ import { Component, OnInit, EventEmitter, Output, Input } from '@angular/core';
 import { RecipeListService } from './services/recipe-list.service';
 import { Response } from '@angular/http';
 import { ShoppingListService } from './services/shopping-list.service';
+import { AuthService } from './services/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -9,26 +10,34 @@ import { ShoppingListService } from './services/shopping-list.service';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-
-  constructor(private recipeService: RecipeListService, private shoppingList: ShoppingListService) { }
+  constructor(private recipeService: RecipeListService, private shoppingList: ShoppingListService, public auth: AuthService) { }
 
   ngOnInit() {
+    
+  }
+
+  logout(){
+    this.auth.logout();
   }
 
   fetchData(){
-    this.recipeService.fetchRecipes();
-    this.shoppingList.fetchIngredients();
+    if(this.auth.isAuthenticated()){
+      this.recipeService.fetchRecipes();
+      this.shoppingList.fetchIngredients();
+    }
   }
 
   saveData(){
-    this.recipeService.saveRecipes().subscribe(
-      (response: Response) => {
-        alert("Recipes have been saved");
-      }
-      ,(error: Response) => {
-        console.log(error);
-      }
-    );
+    if(this.auth.isAuthenticated()){
+      this.recipeService.saveRecipes().subscribe(
+        (response: Response) => {
+          alert("Recipes have been saved");
+        }
+        ,(error: Response) => {
+          console.log(error);
+        }
+      );
+    }
   }
 
 }

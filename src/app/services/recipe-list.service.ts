@@ -2,6 +2,7 @@ import { Recipe } from '../models/recipe.model';
 import { Ingredient } from '../models/ingredient.model';
 import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
+import { AuthService } from './auth.service';
 
 @Injectable()
 export class RecipeListService {
@@ -23,11 +24,11 @@ export class RecipeListService {
   ];
 
   public saveRecipes(){
-    return this.http.put("https://recipebook-3e9c5.firebaseio.com/recipes.json",this.recipes);
+    return this.http.put("https://recipebook-3e9c5.firebaseio.com/recipes.json?auth="+this.auth.token,this.recipes);
   }
 
   public fetchRecipes(){
-     this.http.get("https://recipebook-3e9c5.firebaseio.com/recipes.json").subscribe(
+     this.http.get("https://recipebook-3e9c5.firebaseio.com/recipes.json?auth="+this.auth.token).subscribe(
        (response: Response) => {
          let recipes: Recipe[] = response.json();
          this.recipes = recipes || [];
@@ -77,7 +78,7 @@ export class RecipeListService {
     return this.saveRecipes()
   }
 
-  constructor(private http: Http) {
+  constructor(private http: Http, private auth: AuthService) {
     this.fetchRecipes();
   }
 }
