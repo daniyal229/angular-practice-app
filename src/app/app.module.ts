@@ -20,6 +20,7 @@ import { SignUpComponent } from './auth/sign-up/sign-up.component';
 import { SignInComponent } from './auth/sign-in/sign-in.component';
 import { AuthService } from './services/auth.service';
 import { AuthGuardService } from './services/auth-guard.service';
+import { RecipeIngredientsEditComponent } from './recipes/recipe-ingredients-edit/recipe-ingredients-edit.component';
 
 
 @NgModule({
@@ -39,6 +40,7 @@ import { AuthGuardService } from './services/auth-guard.service';
     ElipsisPipe,
     SignUpComponent,
     SignInComponent,
+    RecipeIngredientsEditComponent,
   ],
   imports: [
     BrowserModule,

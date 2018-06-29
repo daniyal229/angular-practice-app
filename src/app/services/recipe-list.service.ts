@@ -36,6 +36,26 @@ export class RecipeListService {
      )
   }
 
+  public addIngredientToRecipe(recipe,ingredient){
+    let selectedRecipe = this.getRecipe(recipe.id);
+    let ingredientExists = false;
+    for (const i in selectedRecipe.ingredients) {
+      if (selectedRecipe.ingredients[i].name.toLowerCase() === ingredient.name.toLowerCase()) {
+        selectedRecipe.ingredients[i].amount = selectedRecipe.ingredients[i].amount + ingredient.amount;
+        ingredientExists = true;
+        break;
+      }
+    }
+    if (!!!ingredientExists) {
+      selectedRecipe.ingredients.push(ingredient);
+    }
+    this.saveRecipes().subscribe(
+      (response: Response) => {
+        console.log(response);
+      }
+    );   
+  }
+
   public getRecipes(): Recipe[] {
     return this.recipes;
   }

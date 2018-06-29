@@ -1,26 +1,32 @@
 <div class="row">
-	<div class="col s4 l4 m4">
-		<h4>{{recipe.name}}</h4>
-		<p class="recipe-description">{{recipe.description}}</p>
-		<div class="row">
-	      <div class="col s12 l12 m12">
-	      	<ul>
-	      		<li *ngFor="let ingredient of recipe.ingredients">{{ingredient.name}} : {{ingredient.amount}}</li>
-	      	</ul>
-	      </div>
-	    </div>
-		<div class="row">
-	      <div class="col s12 l12 m12">
-	        <a class="btn cursor-pointer" appDropdown="" data-target="dropdown2">Manage Recipe</a>
-	        <ul id='dropdown2' class='dropdown-content'>
-			    <li class="cursor-pointer"><a [routerLink]="['/recipes', recipe.id, 'edit']">Edit</a></li>
-			    <li class="cursor-pointer"><a (click)="removeRecipe(recipe.id)">Delete</a></li>
-			    <li class="cursor-pointer" (click)="shoppingList.addIngredients(recipe.ingredients)"><a>Add To Shopping List</a></li>
-			  </ul>
-	       </div>
-	    </div>
+	<div *ngIf="!!!recipeForIngredients">
+		<div class="col s4 l4 m4">
+			<h4>{{recipe.name}}</h4>
+			<p class="recipe-description">{{recipe.description}}</p>
+			<div class="row">
+					<div class="col s12 l12 m12">
+						<ul>
+							<li *ngFor="let ingredient of recipe.ingredients">{{ingredient.name}} : {{ingredient.amount}}</li>
+						</ul>
+					</div>
+				</div>
+			<div class="row">
+					<div class="col s12 l12 m12">
+						<a class="btn cursor-pointer" appDropdown="" data-target="dropdown2">Manage Recipe</a>
+						<ul id='dropdown2' class='dropdown-content'>
+						<li class="cursor-pointer"><a [routerLink]="['/recipes', recipe.id, 'edit']">Edit</a></li>
+						<li class="cursor-pointer"><a [routerLink]="['/recipes', recipe.id, 'ingredients']">Add Ingredients</a></li>
+						<li class="cursor-pointer"><a (click)="removeRecipe(recipe.id)">Delete</a></li>
+						<li class="cursor-pointer" (click)="shoppingList.addIngredients(recipe.ingredients)"><a>Add To Shopping List</a></li>
+					</ul>
+					</div>
+				</div>
+		</div>
+		<div class="col s8 l8 m8">
+			<img alt="" class="responsive-img recipe-image" src="{{recipe.imageSrc}}">
+		</div>
 	</div>
-	<div class="col s8 l8 m8">
-		<img alt="" class="responsive-img recipe-image" src="{{recipe.imageSrc}}">
+	<div *ngIf="!!recipeForIngredients">
+		<router-outlet></router-outlet>
 	</div>
 </div>

@@ -9,13 +9,16 @@ import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component
 import { SignInComponent } from './auth/sign-in/sign-in.component';
 import { SignUpComponent } from './auth/sign-up/sign-up.component';
 import { AuthGuardService } from './services/auth-guard.service';
+import { RecipeIngredientsEditComponent } from './recipes/recipe-ingredients-edit/recipe-ingredients-edit.component';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: '/recipes', pathMatch: 'full' },
   { path: 'recipes', component: RecipesComponent, children: [
 //    { path: '', component: RecipeStartComponent },
     { path: 'new', component: RecipeEditComponent , canActivate: [AuthGuardService]},
-    { path: ':id', component: RecipeDetailComponent },
+    { path: ':id', component: RecipeDetailComponent, canActivate: [AuthGuardService], children: [
+      { path: 'ingredients', component: RecipeIngredientsEditComponent, canActivate: [AuthGuardService] }
+    ] },
     { path: ':id/edit', component: RecipeEditComponent, canActivate: [AuthGuardService] },
   ], canActivate: [AuthGuardService] },
   { path: 'shopping-list', component: ShoppingListComponent, canActivate: [AuthGuardService] },
