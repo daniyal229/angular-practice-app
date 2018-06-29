@@ -29,14 +29,7 @@ export class HeaderComponent implements OnInit {
 
   saveData(){
     if(this.auth.isAuthenticated()){
-      this.recipeService.saveRecipes().subscribe(
-        (response: Response) => {
-          alert("Recipes have been saved");
-        }
-        ,(error: Response) => {
-          console.log(error);
-        }
-      );
+      this.recipeService.saveRecipes();
     }
   }
 

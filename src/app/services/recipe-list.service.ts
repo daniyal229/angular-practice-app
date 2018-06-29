@@ -3,10 +3,13 @@ import { Ingredient } from '../models/ingredient.model';
 import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
 import { AuthService } from './auth.service';
+import { Subject } from 'rxjs';
 
 @Injectable()
 export class RecipeListService {
 
+
+  public ingredientAddedToRecipe = new Subject<Recipe>();
 
   private recipes: Recipe[] = [
     new Recipe(1, 'Biryani', 'A dish of meat and rice', '/assets/biryani.png',
@@ -51,6 +54,7 @@ export class RecipeListService {
     }
     this.saveRecipes().subscribe(
       (response: Response) => {
+        this.ingredientAddedToRecipe.next(selectedRecipe);
         console.log(response);
       }
     );   

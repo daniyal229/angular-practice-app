@@ -27,6 +27,11 @@ export class RecipeDetailComponent implements OnInit {
           this.recipe = this.recipeService.getRecipe(this.id);
         }
       );
+    this.recipeService.ingredientAddedToRecipe.asObservable().subscribe(
+      (recipe: Recipe) => {
+        this.recipe = recipe;
+      }
+    ) 
   }
 
   removeRecipe(recipe_id: number) {

@@ -1,6 +1,7 @@
 import * as firebase from 'firebase';
 import { Router } from '@angular/router';
 import { Injectable } from '@angular/core';
+import { LocalStorage } from '@ngx-pwa/local-storage'
 
 @Injectable()
 export class AuthService {
@@ -47,5 +48,5 @@ export class AuthService {
   }
 
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private localStorage: LocalStorage) { }
 }
