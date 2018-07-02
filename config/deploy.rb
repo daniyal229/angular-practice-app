@@ -14,7 +14,7 @@ set :deploy_to, "/var/www/recipe_book"
 task :npm_install do
     on roles(:all) do
         within release_path do 
-              execute :npm, "install"
+              execute :npm, "install --silent"
         end
     end
 end
