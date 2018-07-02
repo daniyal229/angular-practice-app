@@ -27,8 +27,8 @@ task :ng_build do
     end
 end
 
-after 'deploy:published','npm_install'
-after 'deploy:published', 'ng_build'
+after 'deploy:updated','npm_install'
+after 'deploy:updated', 'ng_build'
 # Default value for :format is :airbrussh.
 # set :format, :airbrussh
 
