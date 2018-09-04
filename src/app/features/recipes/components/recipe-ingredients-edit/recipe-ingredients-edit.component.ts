@@ -1,9 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Recipe } from '../../models/recipe.model';
 import { ActivatedRoute, Params } from '@angular/router';
-import { RecipeListService } from '../../services/recipe-list.service';
+import { RecipeListService } from '../../../../shared/services/recipe-list.service';
 import $ from 'jquery';
-import { Ingredient } from '../../models/ingredient.model';
+import { Ingredient } from '../../../../shared/models/ingredient.model';
 
 @Component({
   selector: 'app-recipe-ingredients-edit',

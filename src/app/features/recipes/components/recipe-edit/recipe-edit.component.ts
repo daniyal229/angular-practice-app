@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { NgForm } from '@angular/forms';
 import { Recipe } from '../../models/recipe.model';
-import { RecipeListService } from '../../services/recipe-list.service';
+import { RecipeListService } from '../../../../shared/services/recipe-list.service';
 import $ from 'jquery';
 import { Response } from '@angular/http';
 

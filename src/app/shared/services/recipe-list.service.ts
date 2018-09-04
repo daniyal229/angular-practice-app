@@ -1,9 +1,9 @@
-import { Recipe } from '../models/recipe.model';
 import { Ingredient } from '../models/ingredient.model';
 import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
 import { AuthService } from './auth.service';
 import { Subject } from 'rxjs';
+import { Recipe } from '../../features/recipes/models/recipe.model';
 
 @Injectable()
 export class RecipeListService {

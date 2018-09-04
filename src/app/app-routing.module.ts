@@ -1,15 +1,15 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { RecipesComponent } from './recipes/recipes.component';
-import { ShoppingListComponent } from './shopping-list/shopping-list.component';
+import { RecipesComponent } from './features/recipes/components/recipes.component';
+import { ShoppingListComponent } from './features/shopping-list/components/shopping-list.component';
 //import { RecipeStartComponent } from './recipes/recipe-start/recipe-start.component';
-import { RecipeDetailComponent } from './recipes/recipe-detail/recipe-detail.component';
-import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component';
-import { SignInComponent } from './auth/sign-in/sign-in.component';
-import { SignUpComponent } from './auth/sign-up/sign-up.component';
-import { AuthGuardService } from './services/auth-guard.service';
-import { RecipeIngredientsEditComponent } from './recipes/recipe-ingredients-edit/recipe-ingredients-edit.component';
+import { RecipeDetailComponent } from './features/recipes/components/recipe-detail/recipe-detail.component';
+import { RecipeEditComponent } from './features/recipes/components/recipe-edit/recipe-edit.component';
+import { SignInComponent } from './features/auth/components/sign-in/sign-in.component';
+import { SignUpComponent } from './features/auth/components/sign-up/sign-up.component';
+import { AuthGuardService } from './shared/services/auth-guard.service';
+import { RecipeIngredientsEditComponent } from './features/recipes/components/recipe-ingredients-edit/recipe-ingredients-edit.component';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: '/recipes', pathMatch: 'full' },

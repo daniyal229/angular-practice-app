@@ -1,8 +1,7 @@
 import { Component, OnInit, EventEmitter, Output, Input } from '@angular/core';
-import { RecipeListService } from './services/recipe-list.service';
-import { Response } from '@angular/http';
-import { ShoppingListService } from './services/shopping-list.service';
-import { AuthService } from './services/auth.service';
+import { RecipeListService } from '../../services/recipe-list.service';
+import { ShoppingListService } from '../../services/shopping-list.service';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-header',
