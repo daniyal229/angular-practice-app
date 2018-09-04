@@ -1,9 +1,0 @@
-textarea{
-	width: 1098px;
-    height: 158px;
-    border-radius: 3px;
-}
-
-textarea.ng-invalid.ng-touched{
-	border: red 1px solid;
-}

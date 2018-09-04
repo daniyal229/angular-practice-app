@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ShoppingListService } from './services/shopping-list.service';
-import { RecipeListService } from './services/recipe-list.service';
+import { ShoppingListService } from './shared/services/shopping-list.service';
+import { RecipeListService } from './shared/services/recipe-list.service';
 import * as firebase from 'firebase';
-import { AuthService } from './services/auth.service';
-import { AuthGuardService } from './services/auth-guard.service';
 
 @Component({
   selector: 'app-root',

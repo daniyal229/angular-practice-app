@@ -1,9 +1,0 @@
-<div class="row">
-	<div class="col s3 m3 l3">
-		<app-recipes-list (recipeSelected)="selectedRecipe = $event"></app-recipes-list>
-	</div>
-	<div class="col s9 m9 l9">
-	    <router-outlet></router-outlet>
-		<!-- app-recipe-detail [recipe]="selectedRecipe" *ngIf="!!selectedRecipe"></app-recipe-detail> -->
-	</div>
-</div>
