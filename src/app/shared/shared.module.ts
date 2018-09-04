@@ -7,13 +7,15 @@ import { ActiveOnHoverDirective } from "./directives/active-on-hover.directive";
 import { DropdownDirective } from "./directives/dropdown.directive";
 import { RouterModule } from "@angular/router";
 import { HeaderComponent } from "./components/header/header.component";
+import { SidenavDirective } from "./directives/sidenav.directive";
 
 @NgModule({
     declarations: [
         HeaderComponent,
         ElipsisPipe,
         ActiveOnHoverDirective,
-        DropdownDirective
+        DropdownDirective,
+        SidenavDirective
     ],
     imports: [
         FormsModule,

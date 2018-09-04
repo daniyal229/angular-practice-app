@@ -1,10 +1,9 @@
 <nav>
 	<div class="nav-wrapper grey">
 		<a class="brand-logo logo" routerLink="/recipes">
-			<img src="../assets/recipe_new.jpg" />
 			<span>{{'Recipe Book' | elipsis:30}}</span>
 		</a>
-		<ul id="nav-mobile" class="right hide-on-med-and-down">
+		<ul class="hide-on-med-and-down right">
 			<li routerLinkActive="active" *ngIf="!!!auth.isAuthenticated()"><a routerLink="/login">Login</a></li>
 			<li routerLinkActive="active" *ngIf="!!!auth.isAuthenticated()" ><a routerLink="/signup">Register</a></li>
 			<li routerLinkActive="active" *ngIf="!!auth.isAuthenticated()"><a routerLink="/recipes">Recipes</a></li>
@@ -13,9 +12,18 @@
 			<li *ngIf="!!auth.isAuthenticated()">
 				<a class='dropdown-trigger btn' appDropdown="" href='#' data-target='dropdown1'>Manage</a>
 	        </li>
-			  <!-- Dropdown Structure -->
-			  
 		</ul>
+		<ul id="nav-mobile" class="right sidenav" appSidenav>
+			<li routerLinkActive="active" *ngIf="!!!auth.isAuthenticated()"><a routerLink="/login">Login</a></li>
+			<li routerLinkActive="active" *ngIf="!!!auth.isAuthenticated()" ><a routerLink="/signup">Register</a></li>
+			<li routerLinkActive="active" *ngIf="!!auth.isAuthenticated()"><a routerLink="/recipes">Recipes</a></li>
+			<li routerLinkActive="active" *ngIf="!!auth.isAuthenticated()"><a routerLink="/shopping-list">Shopping List</a></li>
+			<li (click)="logout()" *ngIf="!!auth.isAuthenticated()"><a>Logout</a></li>
+			<li *ngIf="!!auth.isAuthenticated()">
+				<a class='dropdown-trigger btn' appDropdown="" href='#' data-target='dropdown1'>Manage</a>
+	        </li>
+		</ul>
+		<a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
 		<ul id='dropdown1' class='dropdown-content'>
 		    <li class="cursor-pointer" (click)="saveData()"><a>Save Data</a></li>
 		    <li class="cursor-pointer" (click)="fetchData()"><a>Fetch Data</a></li>

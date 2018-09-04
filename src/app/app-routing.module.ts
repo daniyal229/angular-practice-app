@@ -13,17 +13,6 @@ import { RecipeIngredientsEditComponent } from './features/recipes/components/re
 
 const appRoutes: Routes = [
   { path: '', redirectTo: '/recipes', pathMatch: 'full' },
-  { path: 'recipes', component: RecipesComponent, children: [
-//    { path: '', component: RecipeStartComponent },
-    { path: 'new', component: RecipeEditComponent , canActivate: [AuthGuardService]},
-    { path: ':id', component: RecipeDetailComponent, canActivate: [AuthGuardService], children: [
-      { path: 'ingredients', component: RecipeIngredientsEditComponent, canActivate: [AuthGuardService] }
-    ] },
-    { path: ':id/edit', component: RecipeEditComponent, canActivate: [AuthGuardService] },
-  ], canActivate: [AuthGuardService] },
-  { path: 'shopping-list', component: ShoppingListComponent, canActivate: [AuthGuardService] },
-  { path: 'login', component: SignInComponent },
-  { path: 'signup', component: SignUpComponent }
 ];
 
 @NgModule({
