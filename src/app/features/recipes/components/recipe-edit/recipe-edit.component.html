@@ -1,34 +1,36 @@
 <div class="row">
-	<h4>{{!!isNewRecipe ? 'Add Recipe' : 'Update Recipe'}}</h4>
 	<p *ngIf="!!isNewRecipe">
 	  <span class="green-txt" *ngIf="recipeForm.submitted && recipeForm.valid">Recipe has been updated successfully!</span> 	
 	</p>
 	<p *ngIf="!!!isNewRecipe">
 	  <span class="green-txt" *ngIf="recipeForm.submitted && recipeForm.valid">Recipe has been updated successfully!</span> 	
 	</p>
-	<form class="col s12" (ngSubmit)="addOrUpdateRecipe(recipeForm)" #recipeForm="ngForm">
-	  <input type="hidden" [(ngModel)]="recipe.id" ngModelGroup="recipe" name="id" />
-	  <div class="row">
-	    <div class="input-field col s12">
-	      <input name="name" id="name" type="text" class="validate" [(ngModel)]="recipe.name" required ngModelGroup="recipe">
-	      <label for="name">Name</label>
-        </div>
-	  </div>
-	  <div class="row">
-	    <div class="input-field col s12">	
-	      <textarea placeholder="Please type in a description here ...." name="description" id="description"  [(ngModel)]="recipe.description" required ngModelGroup="recipe"></textarea>
-	    </div>
-	  </div>
-	  <div class="row">
-	    <div class="input-field col s12">
-	      <label for="image_link">Image Link</label> 	
-	      <input id="image_link" name="imageSrc" type="text" class="validate" [(ngModel)]="recipe.imageSrc" required ngModelGroup="recipe">
-	    </div>
-	  </div>
-	  <div class="row">
-	    <div class="input-field col s12">
-	      <button class="btn btn-green" type="submit" [disabled]="recipeForm.invalid">Save</button>
-	    </div>
-	  </div>
+	<form class="row" (ngSubmit)="addOrUpdateRecipe(recipeForm)" #recipeForm="ngForm">
+		<div class="col m12 s12 l12">
+			<input type="hidden" [(ngModel)]="recipe.id" ngModelGroup="recipe" name="id" />
+			<h4>{{!!isNewRecipe ? 'Add Recipe' : 'Update Recipe'}}</h4>
+			<div class="row">
+				<div class="input-field col s12">
+					<input name="name" id="name" type="text" class="validate" [(ngModel)]="recipe.name" required ngModelGroup="recipe">
+					<label for="name">Name</label>
+					</div>
+			</div>
+			<div class="row">
+				<div class="input-field col s12">	
+					<textarea placeholder="Please type in a description here ...." name="description" id="description"  [(ngModel)]="recipe.description" required ngModelGroup="recipe"></textarea>
+				</div>
+			</div>
+			<div class="row">
+				<div class="input-field col s12">
+					<label for="image_link">Image Link</label> 	
+					<input id="image_link" name="imageSrc" type="text" class="validate" [(ngModel)]="recipe.imageSrc" required ngModelGroup="recipe">
+				</div>
+			</div>
+			<div class="row">
+				<div class="input-field col s12">
+					<button class="btn btn-green" type="submit" [disabled]="recipeForm.invalid">Save</button>
+				</div>
+			</div>
+		</div>
 	</form>
 </div>

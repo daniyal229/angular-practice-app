@@ -21,7 +21,7 @@ export class RecipeEditComponent implements OnInit {
   constructor(private route: ActivatedRoute, private RecipeListService: RecipeListService) { }
 
   ngOnInit() {
-    this.isNewRecipe = (this.route.snapshot.routeConfig.path === 'new');
+    this.isNewRecipe = window.location.href.endsWith("recipes/new");
     if (!!!this.isNewRecipe) {
       this.route.params.subscribe(
         (params: Params) => {

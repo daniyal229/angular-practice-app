@@ -5,7 +5,8 @@
 		<ul class="collection recipe-collection" *ngIf="!!shoppingList.ingredients && shoppingList.ingredients.length > 0">
 		    <li class="collection-item recipe-collection-item avatar cursor-pointer" *ngFor="let ingredient of shoppingList.ingredients" (click)="setSelectedIngredient(ingredient)" [ngClass]="{active: !!selectedIngredient && selectedIngredient.name == ingredient.name}">
 		      <img src="{{ingredient.imageSrc}}" class="responsive-img circle" />
-		      <span class="title">{{ingredient.name}} ({{ingredient.amount}})</span>
+					<span class="title">{{ingredient.name}} ({{ingredient.amount}})</span>
+					<i class="material-icons" style="float: right" (click)="removeIngredient(ingredient)">delete</i>
 		    </li>
 	    </ul>
 	</div>

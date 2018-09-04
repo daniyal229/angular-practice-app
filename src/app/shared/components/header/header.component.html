@@ -1,7 +1,8 @@
 <nav>
 	<div class="nav-wrapper grey">
-		<a class="brand-logo logo" routerLink="/recipes">
-			<span>{{'Recipe Book' | elipsis:30}}</span>
+		<a class="brand-logo" routerLink="/recipes">
+			<span class="hide-on-med-and-down">{{'Recipes' | elipsis:30}}</span>
+			<span class="hide-on-med-and-up">{{'Recipes' | elipsis:30}}</span>
 		</a>
 		<ul class="hide-on-med-and-down right">
 			<li routerLinkActive="active" *ngIf="!!!auth.isAuthenticated()"><a routerLink="/login">Login</a></li>
