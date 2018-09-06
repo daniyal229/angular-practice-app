@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ShoppingListService } from './shared/services/shopping-list.service';
 import { RecipeListService } from './shared/services/recipe-list.service';
 import * as firebase from 'firebase';
+import { SwUpdate } from '@angular/service-worker';
 
 @Component({
   selector: 'app-root',
@@ -11,7 +12,7 @@ import * as firebase from 'firebase';
 })
 export class AppComponent implements OnInit{
 
-   constructor(public shoppingList: ShoppingListService, public recipeList: RecipeListService) { }
+   constructor(private swUpdate: SwUpdate, public shoppingList: ShoppingListService, public recipeList: RecipeListService) { }
 
    recipesVisible = true;
 
@@ -32,6 +33,21 @@ export class AppComponent implements OnInit{
         storageBucket: "recipebook-3e9c5.appspot.com",
         messagingSenderId: "775665832050"
       })
+
+      if(this.swUpdate.isEnabled) {
+        this.swUpdate.available.subscribe(
+          success => {
+            if(confirm("New version available. Load New Version?")) {
+              window.location.reload();
+            }
+          },
+          error => {
+            console.log(error);
+          }
+        )
+      }
+
+      console.log("updating code");
    }
 
 }
