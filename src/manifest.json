@@ -1,8 +1,8 @@
 {
   "name": "Rasoi",
   "short_name": "Rasoi",
-  "theme_color": "#1976d2",
-  "background_color": "#fafafa",
+  "theme_color": "#ea2227",
+  "background_color": "#ea2227",
   "display": "standalone",
   "scope": "/",
   "start_url": "/",

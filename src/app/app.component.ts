@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ShoppingListService } from './shared/services/shopping-list.service';
 import { RecipeListService } from './shared/services/recipe-list.service';
 import * as firebase from 'firebase';
-import { SwUpdate } from '@angular/service-worker';
+import { SwUpdate, SwPush } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 @Component({
   selector: 'app-root',
@@ -12,7 +13,7 @@ import { SwUpdate } from '@angular/service-worker';
 })
 export class AppComponent implements OnInit{
 
-   constructor(private swUpdate: SwUpdate, public shoppingList: ShoppingListService, public recipeList: RecipeListService) { }
+   constructor(private swPush: SwPush, private swUpdate: SwUpdate, public shoppingList: ShoppingListService, public recipeList: RecipeListService) { }
 
    recipesVisible = true;
 
