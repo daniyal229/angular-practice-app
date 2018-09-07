@@ -1,5 +1,17 @@
 # See http://help.github.com/ignore-files/ for more about ignoring files.
 
+# Push notifications
+
+webpush.js
+
+#json-server
+
+db.json
+
+# VAPID keys
+
+/vapid_keys/
+
 # compiled output
 /dist
 /tmp

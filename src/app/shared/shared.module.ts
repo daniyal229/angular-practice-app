@@ -2,6 +2,7 @@ import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { FormsModule } from "@angular/forms";
 import { HttpModule } from "@angular/http";
+import { HttpClientModule } from "@angular/common/http";
 import { ElipsisPipe } from "./pipes/elipsis.pipe";
 import { ActiveOnHoverDirective } from "./directives/active-on-hover.directive";
 import { DropdownDirective } from "./directives/dropdown.directive";
@@ -20,6 +21,7 @@ import { SidenavDirective } from "./directives/sidenav.directive";
     imports: [
         FormsModule,
         HttpModule,
+        HttpClientModule,
         CommonModule,
         RouterModule
     ],

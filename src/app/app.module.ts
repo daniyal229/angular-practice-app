@@ -9,6 +9,8 @@ import { SharedModule } from './shared/shared.module';
 import { AuthModule } from './features/auth/auth.module';
 import { RecipesModule } from './features/recipes/recipes.module';
 import { ShoppingListModule } from './features/shopping-list/shopping-list.module';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 
 @NgModule({
@@ -21,7 +23,8 @@ import { ShoppingListModule } from './features/shopping-list/shopping-list.modul
     AuthModule,
     RecipesModule,
     ShoppingListModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [AuthGuardService, AuthService],
   bootstrap: [AppComponent]

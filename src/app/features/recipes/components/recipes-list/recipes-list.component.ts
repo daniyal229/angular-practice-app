@@ -12,7 +12,7 @@ export class RecipesListComponent implements OnInit {
 
   @Output() recipeSelected = new EventEmitter<Recipe>();
 
-  constructor(private recipeList: RecipeListService) { }
+  constructor(public recipeList: RecipeListService) { }
 
   ngOnInit() {
   }

@@ -7,7 +7,8 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "superstatic": "ng build --prod && superstatic ./dist/recipish -c ./dist/recipish/superstatic.json --port 8080 --host 0.0.0.0"
   },
   "private": true,
   "dependencies": {
@@ -19,7 +20,9 @@
     "@angular/http": "^6.0.3",
     "@angular/platform-browser": "^6.0.3",
     "@angular/platform-browser-dynamic": "^6.0.3",
+    "@angular/pwa": "^0.7.5",
     "@angular/router": "^6.0.3",
+    "@angular/service-worker": "^6.0.3",
     "@ngx-pwa/local-storage": "^6.0.0-rc.0",
     "angular2-materialize": "^15.1.10",
     "core-js": "^2.5.4",
@@ -51,6 +54,7 @@
     "protractor": "~5.3.0",
     "ts-node": "~5.0.1",
     "tslint": "~5.9.1",
-    "typescript": "~2.7.2"
+    "typescript": "~2.7.2",
+    "web-push": "^3.3.2"
   }
 }
