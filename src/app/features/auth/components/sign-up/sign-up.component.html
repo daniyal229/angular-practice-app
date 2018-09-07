@@ -1,21 +1,21 @@
-<div class="container">
-  <div class="row">
+<div class="container auth-container">
+  <div class="row auth-form">
       <form class="col s12" (ngSubmit)="register(signUpForm)" id="reg-form" #signUpForm="ngForm">
         <div class="row">
           <div class="input-field col s12">
-            <input id="email" name="email" type="email" class="validate" required ngModel>
+            <input id="email" autocomplete="off" name="email" type="email" required ngModel>
             <label for="email">Email</label>
           </div>
         </div>
         <div class="row">
           <div class="input-field col s12">
-            <input id="password" type="password" name="password" class="validate" minlength="6" required ngModel>
+            <input id="password" autocomplete="off" type="password" name="password" minlength="6" required ngModel>
             <label for="password">Password</label>
           </div>
         </div>
         <div class="row">
           <div class="input-field col s12">
-            <button [disabled]="signUpForm.invalid" class="btn btn-large btn-register waves-effect waves-light btn-app-color" type="submit" name="action">Register
+            <button [disabled]="signUpForm.invalid" class="btn btn-large waves-effect waves-light btn-app-color w-100" type="submit" name="action">Register
             </button>
           </div>
         </div>

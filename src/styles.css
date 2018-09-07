@@ -7,3 +7,25 @@
 .btn-app-color {
 	background-color: #ea2227;
 }
+
+.btn-app-color:hover {
+	background-color: #ea2227ab;
+}
+
+.auth-form {
+	padding: 10px 10px 0px 10px;
+	margin-bottom: 0px;
+}
+
+.auth-form > form > :last-child {
+	margin-bottom: 0px;
+}
+
+.auth-container{
+	border: 1px solid grey;
+	border-radius: 5px;
+}
+
+.w-100 {
+	width: 100%;
+}
