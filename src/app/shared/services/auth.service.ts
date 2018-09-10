@@ -28,7 +28,7 @@ export class AuthService {
         firebase.auth().currentUser.getIdToken().then(
           response => {
             this.token = response;
-            this.router.navigate(['/recipes'])
+            this.router.navigate(['/home'])
           }
         )
       }
@@ -46,7 +46,6 @@ export class AuthService {
     this.token = null;
     this.router.navigate(['/login'])
   }
-
-
+  
   constructor(private router: Router, private localStorage: LocalStorage) { }
 }

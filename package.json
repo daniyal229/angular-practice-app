@@ -8,7 +8,8 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "superstatic": "ng build --prod && superstatic ./dist/recipish -c ./dist/recipish/superstatic.json --port 8080 --host 0.0.0.0"
+    "superstatic": "ng build --prod && superstatic ./dist/recipish -c ./dist/recipish/superstatic.json --port 80 --host 0.0.0.0",
+    "superstatic:ssl": "ng build --prod && superstatic ./dist/recipish -c ./dist/recipish/superstatic.json --key=../../ssl/rasoi.pk.key --cert=../../ssl/rasoi.pk.crt --port 443 --host 0.0.0.0"
   },
   "private": true,
   "dependencies": {
@@ -25,14 +26,17 @@
     "@angular/service-worker": "^6.0.3",
     "@ngx-pwa/local-storage": "^6.0.0-rc.0",
     "angular2-materialize": "^15.1.10",
+    "body-parser": "^1.18.3",
     "core-js": "^2.5.4",
     "firebase": "^5.2.0",
     "hammerjs": "^2.0.8",
     "install": "^0.11.0",
     "jquery": "^2.2.4",
     "localforage": "^1.7.2",
+    "lowdb": "^1.0.0",
     "materialize-css": "^1.0.0-rc.1",
     "rxjs": "^6.0.0",
+    "superstatic": "^6.0.1",
     "zone.js": "^0.8.26"
   },
   "devDependencies": {

@@ -9,6 +9,7 @@ import { DropdownDirective } from "./directives/dropdown.directive";
 import { RouterModule } from "@angular/router";
 import { HeaderComponent } from "./components/header/header.component";
 import { SidenavDirective } from "./directives/sidenav.directive";
+import { HomeComponent } from './components/home/home.component';
 
 @NgModule({
     declarations: [
@@ -16,7 +17,8 @@ import { SidenavDirective } from "./directives/sidenav.directive";
         ElipsisPipe,
         ActiveOnHoverDirective,
         DropdownDirective,
-        SidenavDirective
+        SidenavDirective,
+        HomeComponent
     ],
     imports: [
         FormsModule,
@@ -30,7 +32,11 @@ import { SidenavDirective } from "./directives/sidenav.directive";
         HttpModule,
         CommonModule,
         RouterModule,
-        HeaderComponent
+        HeaderComponent,
+        HomeComponent,
+        ElipsisPipe,
+        ActiveOnHoverDirective,
+        DropdownDirective
     ]
 })
 export class SharedModule {}

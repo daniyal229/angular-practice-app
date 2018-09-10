@@ -42,10 +42,10 @@ export class HeaderComponent implements OnInit {
       success => {
         this.http.post("http://localhost:3000/devices",{subscription: JSON.parse(JSON.stringify(success))}).subscribe(
           success => {
-            console.log(success)
+            alert("Success: \n\n Subscription for push notifications has been succesfully processsed.")
           },
           error => {
-            console.log(error)
+            alert("Error: \n\n A subscription for push notifications is already present for this device.")
           }
         )
       }
@@ -54,6 +54,6 @@ export class HeaderComponent implements OnInit {
         console.log(err)
       }
     )
- }
+  }
 
 }
