@@ -35,6 +35,7 @@ export class AppComponent implements OnInit{
         messagingSenderId: "775665832050"
       })
 
+
       if(this.swUpdate.isEnabled) {
         this.swUpdate.available.subscribe(
           success => {

@@ -2,7 +2,7 @@
   "name": "Rasoi",
   "short_name": "Rasoi",
   "theme_color": "#ea2227",
-  "background_color": "#ea2227",
+  "background_color": "#ffffff",
   "display": "standalone",
   "scope": "/",
   "start_url": "/",

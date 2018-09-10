@@ -4,8 +4,10 @@ import { SignUpComponent } from "./components/sign-up/sign-up.component";
 import { NgModule } from "@angular/core";
 
 const routes: Routes = [
-    { path: 'login', component: SignInComponent },
-    { path: 'signup', component: SignUpComponent }  
+    { path: '', children: [
+        { path: 'login', component: SignInComponent },
+        { path: 'signup', component: SignUpComponent }  
+    ]}
 ]
 @NgModule({
     imports: [

@@ -11,11 +11,13 @@ export class SidenavDirective {
 
   ngOnInit() {
     $(this.el.nativeElement).sidenav();
-    $(this.el.nativeElement).find("li").click(
-      event => {
-        $(this.el.nativeElement).sidenav('close');
-      }
-    )
+    // debugger
+    // $(this.el.nativeElement).find("li").click(
+    //   event => {
+    //     debugger;
+    //     $(this.el.nativeElement).sidenav('close');
+    //   }
+    // )
   }
 
 }

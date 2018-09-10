@@ -4,7 +4,9 @@ import { ShoppingListComponent } from "./components/shopping-list.component";
 import { NgModule } from "@angular/core";
 
 const routes: Routes = [
-    { path: 'shopping-list', component: ShoppingListComponent, canActivate: [AuthGuardService] }
+    { path: '', children: [
+        { path: '', component: ShoppingListComponent, canActivate: [AuthGuardService] }
+    ]}
 ]
 
 @NgModule({

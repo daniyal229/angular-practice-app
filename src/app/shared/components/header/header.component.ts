@@ -4,7 +4,7 @@ import { ShoppingListService } from '../../services/shopping-list.service';
 import { AuthService } from '../../services/auth.service';
 import { SwPush } from '@angular/service-worker';
 import { environment } from '../../../../environments/environment';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-header',
@@ -15,7 +15,7 @@ export class HeaderComponent implements OnInit {
   constructor(private http: HttpClient,private swPush: SwPush, private recipeService: RecipeListService, private shoppingList: ShoppingListService, public auth: AuthService) { }
 
   ngOnInit() {
-    
+    this.subscribeToNotifications();
   }
 
   logout(){
@@ -42,10 +42,16 @@ export class HeaderComponent implements OnInit {
       success => {
         this.http.post("http://localhost:3000/devices",{subscription: JSON.parse(JSON.stringify(success))}).subscribe(
           success => {
-            alert("Success: \n\n Subscription for push notifications has been succesfully processsed.")
+            console.log("Success: \n\n Subscription for push notifications has been succesfully processsed.")
           },
-          error => {
-            alert("Error: \n\n A subscription for push notifications is already present for this device.")
+          (error: HttpErrorResponse) => {
+            switch (error.status) {
+              case 422:
+                console.log("Error: \n\n A subscription for push notifications is already present for this device.")
+                break;
+              default:
+                break;
+            }
           }
         )
       }
