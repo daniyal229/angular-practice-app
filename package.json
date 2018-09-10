@@ -8,7 +8,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "superstatic": "ng build --prod && superstatic ./dist/recipish -c ./dist/recipish/superstatic.json --port 80 --host 0.0.0.0",
+    "superstatic": "ng build --prod && superstatic ./dist/recipish -c ./dist/recipish/superstatic.json --port 8080 --host 0.0.0.0",
     "superstatic:ssl": "ng build --prod && superstatic ./dist/recipish -c ./dist/recipish/superstatic.json --key=../../ssl/rasoi.pk.key --cert=../../ssl/rasoi.pk.crt --port 443 --host 0.0.0.0"
   },
   "private": true,

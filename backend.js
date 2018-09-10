@@ -15,17 +15,9 @@ app.use(function(req, res, next) {
 });
 
 app.post("/devices",(request,response) => {
-    let device = db.get('devices').findLast((d) => {
-        return d.subscription.endpoint == request.body.subscription.endpoint
-    })
-    if(!!!device.value()) {
-        db.get("devices").push({id: db.get('devices').value().length + 1, subscription: request.body.subscription}).write();
-        response.status(201)
-        response.send({message: "device created"})
-    } else {
-        response.status(422)
-        response.send({message: "device exists"})
-    }
+    db.get("devices").push({id: db.get('devices').value().length + 1, subscription: request.body.subscription}).write();
+    response.status(201)
+    response.send({message: "device created"})
 })
 
 app.listen(3000,'localhost', () => {
