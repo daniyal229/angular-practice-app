@@ -6,7 +6,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AuthService } from './shared/services/auth.service';
 import { AuthGuardService } from './shared/services/auth-guard.service';
 import { SharedModule } from './shared/shared.module';
-import { ShoppingListModule } from './features/shopping-list/shopping-list.module';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 
@@ -18,7 +17,6 @@ import { environment } from '../environments/environment';
   imports: [
     BrowserModule,
     SharedModule,
-    ShoppingListModule,
     AppRoutingModule,
     ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production })
   ],
