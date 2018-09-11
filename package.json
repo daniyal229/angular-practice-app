@@ -26,6 +26,7 @@
     "@angular/service-worker": "^6.0.3",
     "@ngx-pwa/local-storage": "^6.0.0-rc.0",
     "angular2-materialize": "^15.1.10",
+    "animate.css": "^3.7.0",
     "body-parser": "^1.18.3",
     "core-js": "^2.5.4",
     "firebase": "^5.2.0",
