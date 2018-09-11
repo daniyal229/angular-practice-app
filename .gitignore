@@ -2,15 +2,15 @@
 
 # Push notifications
 
-webpush.js
+#webpush.js
 
 #json-server
 
-db.json
+#db.json
 
 # VAPID keys
 
-/vapid_keys/
+#/vapid_keys/
 
 # compiled output
 /dist
