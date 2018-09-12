@@ -7,11 +7,11 @@ module.exports = {
     entry: {
         app: [
             './src/app/main.component.tsx', 
-           'webpack-hot-middleware/client'
+        //    'webpack-hot-middleware/client'
         ],
         styles: [
             './src/app/styles/main.scss', 
-            'webpack-hot-middleware/client'
+            // 'webpack-hot-middleware/client'
         ],
         vendor: ['react', 'react-dom']
     },
@@ -25,6 +25,16 @@ module.exports = {
     },
     module: {
         rules: [
+            {
+                test: /\.(png|jp(e*)g|svg|gif)$/,  
+                use: [{
+                    loader: 'url-loader',
+                    options: { 
+                        limit: 8000, // Convert images < 8kb to base64 strings
+                        name: 'images/[hash]-[name].[ext]'
+                    } 
+                }]
+            },
             {
                 test: /\.(ts|tsx)$/,
                 loader: 'ts-loader'
@@ -42,6 +52,6 @@ module.exports = {
     },
     plugins: [
         new HtmlWebpackPlugin({ template: path.resolve(__dirname, 'src', 'app', 'index.html') }),
-        new webpack.HotModuleReplacementPlugin()
+        // new webpack.HotModuleReplacementPlugin()
     ]
 }

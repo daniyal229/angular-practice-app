@@ -1,0 +1,61 @@
+.videolisting {
+    height: inherit;
+    overflow-y: auto;
+    overflow-x: hidden;
+    .videolisting-item {
+        padding-left: 10px;
+        cursor: pointer;
+        &:hover {
+            background-color: lightgray;
+        }
+    }
+}
+
+.search-container {
+    margin-bottom: 0px;
+}
+
+.player-container {
+    .player {
+        height: 310px;
+        .player-frame {
+            .frame {
+                width: 100%;
+                height: inherit;
+            }
+            height: 100%;
+        }
+    }
+
+    .details {
+        height: 130px;
+    }
+}
+
+.loader-container {
+    margin-top: 20%;
+    .loader {
+        left: 45%;
+    }
+}
+
+
+.player {
+    width: 100%;
+    height: 60%;
+}
+
+@mixin animationDelay ($delay) { 
+	-webkit-animation-delay: $delay;  
+	-moz-animation-delay:    $delay;
+	-ms-animation-delay:     $delay; 
+	-o-animation-delay:      $delay;  
+    animation-delay:      $delay; 
+}
+
+$interval: .4s;
+$classesToAdd: 10;
+
+@for $i from 1 to $classesToAdd + 1 {
+	._#{$i} { @include animationDelay($i * $interval); }
+}

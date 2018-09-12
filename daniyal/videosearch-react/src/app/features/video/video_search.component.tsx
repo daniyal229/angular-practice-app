@@ -1,11 +1,11 @@
 import * as React from 'react';
 
-export class VideoSearchComponent extends React.Component {
+export class VideoSearchComponent extends React.Component<{onVideoSearch: any}> {
 
     state: {term: string}
+    typingTimeout: any = null;
     constructor(props: any) {
         super(props);
-        console.log(props);
         this.state = { 
             term: ''
         }
@@ -13,13 +13,21 @@ export class VideoSearchComponent extends React.Component {
 
     render() {
         return (
-            <div>
-                <input onChange={this.handleVideoSearch.bind(this)} type="text" placeholder="Type to search for videos ...." />  
+            <div className="input-field col s12">
+                <input onChange={(event: any) => this.search(event.target.value)} placeholder="Type to search for videos ..." id="search" type="text" className="validate" />
             </div>
         );
     }
 
-    handleVideoSearch(event: any) {
-        this.setState({ term: event.target.value})
+    search(term: string) {
+        this.setState({ term }) 
+        if(!!this.typingTimeout){
+            clearTimeout(this.typingTimeout);
+        }
+        this.typingTimeout = setTimeout(
+            () => {
+                this.props.onVideoSearch(term)
+            }, 1000
+        )
     }
 }
