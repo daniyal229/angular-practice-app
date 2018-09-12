@@ -61,7 +61,6 @@ export class YoutubeVideo {
     }
 
     getUrl(): string {
-        debugger;
         return `${environment.youtube.embedBaseUrl}${this.id.videoId}`
     }
 
