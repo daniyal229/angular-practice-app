@@ -1,0 +1,18 @@
+.cursor-pointer {
+    cursor: pointer;
+}
+
+.search-button {
+    margin-bottom: 0px;
+    position: relative;
+    top: 9px;
+    .btn-search {
+        position: absolute;
+        width: 100%;
+    }
+    .icon-search {
+        position: absolute;
+        top: 7px;
+        left: 24px;
+    }
+}
