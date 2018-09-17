@@ -1,7 +1,9 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
+import { fetchWeather } from '../actions';
+import { bindActionCreators } from 'redux';
 
-export class SearchBarContainer extends React.Component {
+class SearchBarContainer extends React.Component <{fetchWeather: any}> {
 
     state: {term: string}
     constructor(props: any) {
@@ -10,7 +12,6 @@ export class SearchBarContainer extends React.Component {
         this.onInputChange = this.onInputChange.bind(this);
         this.searchPlaces = this.searchPlaces.bind(this);
     }
-
     render(){
         return (
             <form onSubmit={this.searchPlaces} className="col s12">
@@ -29,6 +30,8 @@ export class SearchBarContainer extends React.Component {
 
     searchPlaces(event: any) {
         event.preventDefault();
+        this.props.fetchWeather(this.state.term);
+        this.setState({term: ''});
         /* Ask redux to get places */
     }
 
@@ -36,3 +39,9 @@ export class SearchBarContainer extends React.Component {
         this.setState({ term: event.target.value })
     }
 }
+
+let mapDispatchToProps = (dispatch: any) => {
+    return bindActionCreators({ fetchWeather }, dispatch);
+}
+
+export default connect(null, mapDispatchToProps)(SearchBarContainer);
