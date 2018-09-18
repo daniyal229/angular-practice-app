@@ -2,6 +2,9 @@ import * as React from 'react';
 import { Link } from 'react-router-dom';
 import { Field, reduxForm, InjectedFormProps } from 'redux-form';
 import { Post } from '../models/post.model';
+import { bindActionCreators } from 'redux';
+import { createPost } from '../actions/create_post.action';
+import { connect } from 'net';
 
 class CreatePostComponent extends React.Component<InjectedFormProps<Post>> {
     
@@ -19,11 +22,11 @@ class CreatePostComponent extends React.Component<InjectedFormProps<Post>> {
                             <Field 
                                 name="title"
                                 id="title"
-                                component={(field: any) => {
+                                component={(field) => {
                                     return (
                                     <div>
-                                        {field.meta.error}
                                         <input {...field.input} name="title" id="title" type="text" className="validate" />
+                                        <span className="helper-text" data-error="wrong" data-success="right">{field.meta.touched? field.meta.error : ''}</span>
                                     </div>)
                                 }}
                                 type="text"
@@ -40,8 +43,8 @@ class CreatePostComponent extends React.Component<InjectedFormProps<Post>> {
                                 component={(field: any) => {
                                     return (
                                     <div>
-                                        {field.meta.error}
                                         <input {...field.input} name="categories" id="categories" type="text" className="validate" />
+                                        <span className="helper-text" data-error="wrong" data-success="right">{field.meta.touched? field.meta.error : ''}</span>
                                     </div>
                                     )
                                 }}
@@ -58,8 +61,8 @@ class CreatePostComponent extends React.Component<InjectedFormProps<Post>> {
                                 component={(field: any) => {
                                     return (
                                         <div>
-                                        {field.meta.error}
                                         <textarea placeholder="Please enter some content here ..." {...field.input} id="content" name="content" style={{margin: "0px", height: "183px", width: "919px"}} className="validate"></textarea>
+                                        <span className="helper-text" data-error="wrong" data-success="right">{field.meta.touched? field.meta.error : ''}</span>
                                         </div>
                                     )
                                 }}
@@ -88,5 +91,9 @@ let validate = (values: Post) => {
 let createPostsForm = reduxForm({ 
     form: 'CreatePostsForm',
     validate: validate 
-})(CreatePostComponent);
+})(
+    connect(null, { createPost })(CreatePostComponent)
+);
+
+
 export { createPostsForm as CreatePostComponent}
