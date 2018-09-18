@@ -12,5 +12,8 @@ export const createPost = (post: Post) => {
         }
     })
 
-    return { type, payload }
+    return { 
+        type: type, 
+        payload: payload 
+    }
 }

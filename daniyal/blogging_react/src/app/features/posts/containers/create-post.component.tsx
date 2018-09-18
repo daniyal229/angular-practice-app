@@ -2,14 +2,14 @@ import * as React from 'react';
 import { Link } from 'react-router-dom';
 import { Field, reduxForm, InjectedFormProps } from 'redux-form';
 import { Post } from '../models/post.model';
-import { bindActionCreators } from 'redux';
 import { createPost } from '../actions/create_post.action';
-import { connect } from 'net';
+import { connect } from 'react-redux';
 
-class CreatePostComponent extends React.Component<InjectedFormProps<Post>> {
-    
+class CreatePostComponent extends React.Component<{createPost: any} & InjectedFormProps<Post, {createPost: any}>>{
+
+
     onSubmit(values: Post) {
-        console.log(values);
+        this.props.createPost(new Post(values))
     }
     
     render() {

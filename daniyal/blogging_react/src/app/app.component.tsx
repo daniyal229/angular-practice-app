@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import { CreatePostComponent } from './features/posts/components/create-post.component';
+import { CreatePostComponent } from './features/posts/containers/create-post.component';
 import { PostComponent } from './features/posts/components/post.component';
 import PostsContainer from './features/posts/containers/posts.container';
 
