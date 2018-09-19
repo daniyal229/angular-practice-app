@@ -23,17 +23,17 @@ class PostsContainer extends React.Component<{posts?: Post[], getPosts?: any}> {
         let keys = Object.keys(this.props.posts || {})
         let posts = keys.map(
             (key: any) => {
-                return <li className="collection-item">{this.props.posts[key].title}</li>
+                return <li className="collection-item">{this.props.posts[key].title}<Link className="btn btn-primary right" to={`/posts/${key}`}>Show</Link></li>
             }
         )
         return (
-            <div className="row animated slideInRight">
-                <h3>Posts</h3>
-                <Link className="btn btn-primary right" to="/posts/new" style={{position: "relative", top: "10px"}}>
+            <div className="row posts">
+                <h3 style={{display: "inline"}}>Posts</h3>
+                <Link className="btn btn-primary right" to="/posts/new" style={{position: "relative", top: "10px", right: "16px"}}>
                     Add a Post
                 </Link>
                 <div className="col m12 s12 l12" style={{padding: "0px", margin: "0px"}}>
-                    <ul className="collection">{posts}</ul>
+                    <ul className="collection  animated slideInRight">{posts}</ul>
                 </div>
             </div>
         );

@@ -5,18 +5,20 @@ import { Post } from '../models/post.model';
 import { createPost } from '../actions/create_post.action';
 import { connect } from 'react-redux';
 
-class CreatePostComponent extends React.Component<{createPost: any} & InjectedFormProps<Post, {createPost: any}>>{
+class CreatePostContainer extends React.Component<{createPost: any, history: any} & InjectedFormProps<Post>>{
 
 
     onSubmit(values: Post) {
-        this.props.createPost(new Post(values))
+        this.props.createPost(new Post(values), () => {
+            this.props.history.push("/")
+        })
     }
     
     render() {
         return (
-            <div className="row">
+            <div className="row remove-margins">
                 <form  className="col s12" onSubmit={this.props.handleSubmit(this.onSubmit.bind(this))}>
-                    <div className="row">
+                    <div className="row remove-margins">
                         <div className="input-field col s12">
                             <h6>Title</h6>
                             <Field 
@@ -34,7 +36,7 @@ class CreatePostComponent extends React.Component<{createPost: any} & InjectedFo
                             />
                         </div>
                     </div>
-                    <div className="row">
+                    <div className="row remove-margins">
                         <div className="input-field col s12">
                             <h6>Categories</h6>
                             <Field 
@@ -53,7 +55,7 @@ class CreatePostComponent extends React.Component<{createPost: any} & InjectedFo
                             />
                         </div>
                     </div>
-                    <div className="row">
+                    <div className="row remove-margins">
                         <div className="input-field col s12">
                             <Field 
                                 name="content"
@@ -61,7 +63,7 @@ class CreatePostComponent extends React.Component<{createPost: any} & InjectedFo
                                 component={(field: any) => {
                                     return (
                                         <div>
-                                        <textarea placeholder="Please enter some content here ..." {...field.input} id="content" name="content" style={{margin: "0px", height: "183px", width: "919px"}} className="validate"></textarea>
+                                        <textarea placeholder="Please enter some content here ..." {...field.input} id="content" name="content" style={{margin: "0px", height: "183px"}} className="validate w-100"></textarea>
                                         <span className="helper-text" data-error="wrong" data-success="right">{field.meta.touched? field.meta.error : ''}</span>
                                         </div>
                                     )
@@ -71,10 +73,10 @@ class CreatePostComponent extends React.Component<{createPost: any} & InjectedFo
                             
                         </div>
                     </div>
-                    <div className="row">
+                    <div className="row remove-margins">
                         <div className="input-field col s12">
-                            <input type="submit" className="btn btn-primary" value="Create Post" />
-                            <Link className="btn btn-primary" to="/">Cancel</Link>
+                            <input type="submit" className="btn btn-primary left" value="Create Post" />
+                            <Link className="btn red right" to="/">Cancel</Link>
                         </div>
                     </div>
                 </form>
@@ -92,8 +94,8 @@ let createPostsForm = reduxForm({
     form: 'CreatePostsForm',
     validate: validate 
 })(
-    connect(null, { createPost })(CreatePostComponent)
+    connect(null, { createPost })(CreatePostContainer)
 );
 
 
-export { createPostsForm as CreatePostComponent}
+export { createPostsForm as CreatePostContainer}

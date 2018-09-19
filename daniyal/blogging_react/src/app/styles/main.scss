@@ -9,3 +9,36 @@
 .helper-text {
     color: red;
 }
+
+.collection {
+    height: 480px;
+    overflow-y: auto;
+    .collection-item {
+        height: 60px;
+    }
+}
+
+.container {
+    margin-top: 20px;
+    padding: 21px;
+    border: 1px solid #e0e0e0;
+    border-radius: 18px;
+}
+
+.remove-margins {
+    margin: 0px;
+}
+
+.w-100 {
+    width: 100%;
+}
+
+.hideBar {
+    z-index: 1030;
+    background: white;
+    width: 16px;
+    height: 480px;
+    position: absolute;
+    right: 227px;
+    margin-top: 8px;
+}

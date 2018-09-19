@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import { CreatePostComponent } from './features/posts/containers/create-post.component';
-import { PostComponent } from './features/posts/components/post.component';
+import { BrowserRouter, Route, Switch, Router } from 'react-router-dom';
+import { CreatePostContainer } from './features/posts/containers/create-post.container';
+import  PostContainer  from './features/posts/containers/post.container';
 import PostsContainer from './features/posts/containers/posts.container';
 
 export default class AppComponent extends React.Component {
@@ -10,8 +10,8 @@ export default class AppComponent extends React.Component {
       <BrowserRouter>
           <div className="container">
             <Switch>
-              <Route path="/posts/new" component={CreatePostComponent} />
-              <Route path="/posts/:id" component={PostComponent} />
+              <Route path="/posts/new" component={CreatePostContainer} />
+              <Route path="/posts/:id" component={PostContainer} />
               <Route path="/" component={PostsContainer} />
             </Switch>
           </div>
