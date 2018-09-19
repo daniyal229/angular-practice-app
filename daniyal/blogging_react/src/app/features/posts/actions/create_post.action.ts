@@ -10,14 +10,14 @@ export const createPost = (post: Post, callback: Function) => {
             data = JSON.parse(data)
             return new Post(data)
         }
-    }).then(
-        (success) => {
-            callback();
-        }
-    )
+    })
 
-    return { 
-        type: type, 
-        payload: payload 
+    return (dispatch: Function) => {
+        payload.then(
+            (success) => {
+                callback(success)
+                dispatch({type: type, payload: success})
+            }
+        )
     }
 }

@@ -5,11 +5,12 @@ import 'materialize-css/dist/css/materialize.min.css';
 import 'animate.css';
 import { createStore, applyMiddleware } from 'redux';
 import promiseMiddleware from 'redux-promise';
+import thunk from 'redux-thunk';
 
 import AppComponent from './app.component';
 import { MainReducer } from './main.reducer';
 
-const createStoreWithMiddleware = applyMiddleware(promiseMiddleware)(createStore);
+const createStoreWithMiddleware = applyMiddleware(promiseMiddleware,thunk)(createStore);
 
 
 ReactDOM.render(
