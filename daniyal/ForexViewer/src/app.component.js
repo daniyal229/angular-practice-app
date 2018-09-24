@@ -9,6 +9,15 @@
 import React, {Component} from 'react';
 import {Platform, StyleSheet, Text, View} from 'react-native';
 
+import { Provider } from 'react-redux';
+import { createStore, applyMiddleware } from 'redux';
+import promiseMiddleware from 'redux-promise';
+
+import { MainReducer } from './main.reducer';
+
+// const createStoreWithMiddleware = applyMiddleware(promiseMiddleware)(createStore);
+const store = createStore(MainReducer, applyMiddleware(promiseMiddleware));
+
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
   android:
@@ -20,11 +29,13 @@ const instructions = Platform.select({
 export default class AppComponent extends Component {
   render() {
     return (
+      <Provider store={store}>
       <View style={styles.container}>
         <Text style={styles.welcome}>Welcome to Forex Viewer</Text>
         <Text style={styles.instructions}>To get started, edit App.js</Text>
         <Text style={styles.instructions}>{instructions}</Text>
       </View>
+      </Provider>
     );
   }
 }
