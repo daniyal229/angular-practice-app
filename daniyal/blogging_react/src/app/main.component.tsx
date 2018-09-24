@@ -8,12 +8,16 @@ import promiseMiddleware from 'redux-promise';
 
 import AppComponent from './app.component';
 import { MainReducer } from './main.reducer';
+import { composeWithDevTools } from 'redux-devtools-extension';
 
-const createStoreWithMiddleware = applyMiddleware(promiseMiddleware)(createStore);
-
+//const createStoreWithMiddleware = applyMiddleware(promiseMiddleware)(createStore);
+export const store = createStore(MainReducer, composeWithDevTools(
+  applyMiddleware(promiseMiddleware),
+  // other store enhancers if any
+));
 
 ReactDOM.render(
-  <Provider store={createStoreWithMiddleware(MainReducer)}>
+  <Provider store={store}>
     <AppComponent />
   </Provider>
   , document.querySelector('.root'));

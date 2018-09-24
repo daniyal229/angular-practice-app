@@ -12,7 +12,9 @@ export default class AppComponent extends React.Component {
             <Switch>
               <Route path="/posts/new" component={CreatePostContainer} />
               <Route path="/posts/:id" component={PostContainer} />
-              <Route path="/" component={PostsContainer} />
+              <Route path="/" component={PostsContainer} onEnter={() => {
+                
+              }} />
             </Switch>
           </div>
       </BrowserRouter>
