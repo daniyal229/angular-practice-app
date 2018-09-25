@@ -1,6 +1,10 @@
 import { combineReducers } from "redux";
-import { RatesReducer } from "./features/foreign_exchange/reducers/rates.reducer";
+import { ExchangeRatesReducer } from "./features/foreign_exchange/reducers/exchange-rates.reducer";
+import { CryptocurrencyRatesReducer } from "./features/cryptocurrency_exchange_rates/reducers/cryptocurrency-rates.reducer";
+import { StockTrendsReducer } from "./features/stock_trends/reducers/stock-trends.reducer";
 
 export const MainReducer = combineReducers({
-    rates: RatesReducer
+    exchange_rates: ExchangeRatesReducer,
+    crypto_exchange_rates: CryptocurrencyRatesReducer,
+    stock_trends: StockTrendsReducer
 })

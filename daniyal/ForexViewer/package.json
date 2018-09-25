@@ -9,13 +9,21 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
+    "babel-preset-expo": "^4.0.0",
+    "moment": "^2.22.2",
     "react": "16.5.0",
     "react-native": "0.57.1",
+    "react-native-highcharts": "^1.0.2",
+    "react-native-paper": "^2.0.1",
+    "react-native-picker-select": "^4.4.0",
+    "react-native-simple-table": "0.0.3",
+    "react-native-vector-icons": "^5.0.0",
     "react-navigation": "^2.16.0",
     "react-redux": "^5.0.7",
     "redux": "^4.0.0",
     "redux-axios-middleware": "^4.0.0",
-    "redux-promise": "^0.6.0"
+    "redux-promise": "^0.6.0",
+    "redux-thunk": "^2.3.0"
   },
   "devDependencies": {
     "babel-jest": "23.6.0",

@@ -7,7 +7,7 @@ const styles = StyleSheet.create(
     }
 )
 
-export class ForexRatesComponent extends React.Component {
+export class StockTrendsComponent extends React.Component {
     static navigationOptions = {
         title: 'Compare Rates',
         headerStyle: {
@@ -33,7 +33,7 @@ export class ForexRatesComponent extends React.Component {
                 <View style={{flex: 1, flexDirection: 'row'}}>
                     <View>
                         <Text>From Currency</Text>
-                        <Picker
+                        {/* <Picker
                             // selectedValue={this.state.from_currency}
                             style={{ height: 50, width: 100 }}
                             onValueChange={(itemValue, index) => {
@@ -43,22 +43,22 @@ export class ForexRatesComponent extends React.Component {
                         >
                             <Picker.Item label={"PKR"} value={"PKR"} />
                             <Picker.Item label={"USD"} value={"USD"} />
-                        </Picker>
+                        </Picker> */}
                     </View>
                     <View>
                         <Text>To Currency</Text>
-                        <Picker
+                        {/* <Picker
                             // selectedValue={this.state.to_currency}
                             style={{ height: 50, width: 100 }}
                             onValueChange={(itemValue, itemIndex) => this.setState({to_currency: itemValue})}>
                         >
                             <Picker.Item label="PKR" value="PKR" />
                             <Picker.Item label="USD" value="USD" />
-                        </Picker>
+                        </Picker> */}
                     </View>
                 </View>
                 <View>
-
+                    
                      <Button 
                     title="Go Back"
                     onPress = {() => {
