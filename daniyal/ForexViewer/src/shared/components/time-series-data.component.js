@@ -1,24 +1,20 @@
 import * as React from 'react';
-import moment from 'moment';
 import ChartView from 'react-native-highcharts';
 
-export class RatesChartComponent extends React.Component {
+export class TimeSeriesDataComponent extends React.Component {
     constructor(props) {
         super(props)
     }
 
     render() {
-        if (!!this.props.rates) {
+        if (!!this.props.data) {
             var Highcharts = 'Highcharts';
             var conf = {
                 chart: {
                     type: 'line'
                 },
                 xAxis: {
-                    type: 'datetime',
-                    title: {
-                        text: 'Date'
-                    }
+                    visible: false
                 },
                 yAxis: {
                     title: {
@@ -28,7 +24,7 @@ export class RatesChartComponent extends React.Component {
                 },
                 tooltip: {
                     headerFormat: '<b>{series.name}</b><br>',
-                    pointFormat: '{point.x:%e. %b}: {point.y:.2f}'
+                    pointFormat: '{point.y:.2f}'
                 },
 
                 plotOptions: {
@@ -40,7 +36,7 @@ export class RatesChartComponent extends React.Component {
                 },
                 series: [{
                     name: 'Rates',
-                    data: this.props.rates.getDataForChart()
+                    data: this.props.data
                 }]
             };
 
@@ -53,7 +49,7 @@ export class RatesChartComponent extends React.Component {
                     thousandsSep: '.'
                 }
             };
-            return <ChartView style={{ height: 300 }} config={conf} options={options}></ChartView>
+            return <ChartView style={this.props.style || {height: 300}} config={conf} options={options}></ChartView>
         } else {
             return null;
         }

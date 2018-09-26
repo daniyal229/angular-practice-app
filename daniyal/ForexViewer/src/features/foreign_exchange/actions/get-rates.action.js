@@ -4,7 +4,7 @@ import Axios from "axios";
 
 export const GET_RATES= 'GET_RATES';
 
-export const getRates = (from_currency, to_currency) => {
+export const getRates = (from_currency, to_currency, callback = null) => {
     let type = GET_RATES;
     let payload = Axios.get(env.vantage.endpoint,{
         params: {
@@ -18,10 +18,14 @@ export const getRates = (from_currency, to_currency) => {
             return new FxRateList(data)
         }
     })
-    debugger;
     return (dispatch, getState) => {
         payload.then(
             (success) => {
+                
+                if(!!callback) {
+                    callback()
+                }
+
                 dispatch({
                     type: type,
                     payload: {

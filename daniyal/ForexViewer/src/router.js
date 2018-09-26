@@ -13,13 +13,6 @@ export const Router =  createStackNavigator({
         }
         
     },
-    CryptoCurrency: {
-        screen: CryptocurrencyRatesComponent,
-        navigationOptions: {
-            title: 'CryptoCurrency Rates'
-        }
-        
-    },
     StockTrends: {
         screen: StockTrendsComponent,
         navigationOptions: {

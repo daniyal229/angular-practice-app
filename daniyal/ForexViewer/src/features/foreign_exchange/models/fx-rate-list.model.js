@@ -12,7 +12,7 @@ export class FxRateList {
         data = this["Time Series FX (Daily)"]
         values = []
         for(key of Object.keys(data)) {
-            values.push([moment.valueOf(key),parseFloat(data[key]["4. close"])])
+            values.unshift([moment.valueOf(key),parseFloat(data[key]["4. close"])])
         }
         return values;
     }
