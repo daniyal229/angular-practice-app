@@ -1,13 +1,12 @@
-export class FxRateList {
-    
+export class StockTrend {
     constructor(obj){
         for(key of Object.keys(obj)){
             this[key] = obj[key]
         }
     }
 
-    getDataForChart() {
-        data = this["Time Series FX (Daily)"]
+    getDataForChart(){
+        data = this["Time Series (Daily)"]
         values = []
         for(key of Object.keys(data)) {
             values.unshift([key,parseFloat(data[key]["4. close"])])
@@ -16,7 +15,7 @@ export class FxRateList {
     }
 
     getTableData(){
-        data = this["Time Series FX (Daily)"]
+        data = this["Time Series (Daily)"]
         values = []
         for(key of Object.keys(data)) {
             values.push({
@@ -26,5 +25,4 @@ export class FxRateList {
         }
         return values
     }
-
 }

@@ -1,75 +1,84 @@
 import * as React from 'react';
-import { View, StyleSheet, Text, Button, Picker } from 'react-native';
+import { ScrollView, View, Text, StyleSheet, Picker} from 'react-native';
+import { Button } from 'react-native-paper';
+import { connect } from 'react-redux';
+import { getStocks } from '../actions/get-stocks.action';
+import { TimeSeriesDataComponent } from '../../../shared/components/time-series-data.component';
+import { spdr } from '../../../shared/assets/spdr';
 
-const styles = StyleSheet.create(
-    {
-        main: { flex: 1, alignItems: 'center', justifyContent: 'center', flexDirection: 'column' }
-    }
-)
+class StockTrendsComponent extends React.Component {
 
-export class StockTrendsComponent extends React.Component {
-    static navigationOptions = {
-        title: 'Compare Rates',
-        headerStyle: {
-            "text-align": 'center'
+    constructor(props) {
+        super(props)
+        this.state = {
+            company: this.props.company || 'MSFT',
+            retrievingTrends: true
         }
     }
 
-    state = {
-        from_currency: 'USD',
-        to_currency: 'PKR'
+    componentDidMount() {
+        this.retrieveTrends()
     }
-    // constructor(props) {
-    //     super(props)
-    //     this.state = {
-    //         from_currency: 'USD',
-    //         to_currency: 'PKR'
-    //     }
-    // }
+
+    retrieveTrends() {
+        this.setState({retrievingTrends: true})
+        this.props.getStocks(this.state.company, () => {
+            this.setState({retrievingTrends: false})
+        })
+    }
+
+    renderCompanies() {
+        return spdr.map(
+            (company) => {
+                return <Picker.Item key={company.symbol} label={`${company.name} (${company.symbol})`} value={company.symbol} />
+            }
+        )
+    }
+
+    renderResult(){
+        debugger
+        if(!this.state.retrievingTrends && !!this.props.trend) {
+            return (
+                <View>
+                    <TimeSeriesDataComponent data={this.props.trend.getDataForChart()}/>
+                </View>
+            )
+        } else {
+            return <Text style={{alignSelf: 'center'}}>Loading ...</Text>
+        }
+    }
 
     render() {
         return (
-            <View style={styles.main}>
-                <View style={{flex: 1, flexDirection: 'row'}}>
-                    <View>
-                        <Text>From Currency</Text>
-                        {/* <Picker
-                            // selectedValue={this.state.from_currency}
-                            style={{ height: 50, width: 100 }}
-                            onValueChange={(itemValue, index) => {
-                                this.setState({from_currency: itemValue});
-                                // return itemValue, index;
-                            }}>
+            <View style={{ flex: 1, flexDirection: 'column' }}>
+                <View style={{ flex: 8, flexDirection: 'column' }}>
+                        <Text>Company</Text>
+                        <Picker
+                            onValueChange={(value, index) => {
+                                this.setState({ company: value })
+                                this.retrieveTrends()
+                            }}
+                            selectedValue={this.state.company}
                         >
-                            <Picker.Item label={"PKR"} value={"PKR"} />
-                            <Picker.Item label={"USD"} value={"USD"} />
-                        </Picker> */}
-                    </View>
-                    <View>
-                        <Text>To Currency</Text>
-                        {/* <Picker
-                            // selectedValue={this.state.to_currency}
-                            style={{ height: 50, width: 100 }}
-                            onValueChange={(itemValue, itemIndex) => this.setState({to_currency: itemValue})}>
-                        >
-                            <Picker.Item label="PKR" value="PKR" />
-                            <Picker.Item label="USD" value="USD" />
-                        </Picker> */}
-                    </View>
+                            {this.renderCompanies()}
+                        </Picker>
+                    <ScrollView style={{ flex: 1, flexDirection: 'column', height: 800}}>
+                        {this.renderResult()}
+                    </ScrollView>
                 </View>
-                <View>
-                    
-                     <Button 
-                    title="Go Back"
-                    onPress = {() => {
-                        this.props.navigation.navigate('Home')
-                    }}
-                />
-
-                </View>
-                
-               
+                <Button onPress={() => {
+                    this.retrieveTrends()
+                }} mode="contained" color="green">Get Stock Trend</Button>
             </View>
         );
     }
 }
+
+let mapStateToProps = (state = {}) => {
+    return {
+        company: state.stock_trends.company,
+        trend: state.stock_trends.trend
+    }
+}
+
+export default connect(mapStateToProps, { getStocks: getStocks })(StockTrendsComponent)
