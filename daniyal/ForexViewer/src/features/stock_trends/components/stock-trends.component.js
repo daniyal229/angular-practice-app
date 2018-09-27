@@ -56,7 +56,6 @@ class StockTrendsComponent extends React.Component {
                         <Picker
                             onValueChange={(value, index) => {
                                 this.setState({ company: value })
-                                this.retrieveTrends()
                             }}
                             selectedValue={this.state.company}
                         >
