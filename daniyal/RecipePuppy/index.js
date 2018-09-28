@@ -1,0 +1,22 @@
+import * as React from 'react';
+import {AppRegistry} from 'react-native';
+import thunk from 'redux-thunk';
+import config from './src/config';
+import { Provider } from 'react-redux';
+import { createStore, applyMiddleware } from 'redux';
+import  promiseMiddleware  from 'redux-promise';
+import { MainReducer } from './src/reducers/main.reducer';
+import { Router } from './src/router';
+
+const store = createStore(MainReducer, applyMiddleware(thunk, promiseMiddleware));
+class AppComponent extends React.Component {
+    render() {
+        return (
+            <Provider store={store}>
+                <Router />
+            </Provider>
+        );
+    }
+}
+
+AppRegistry.registerComponent(config.name, () => AppComponent);
