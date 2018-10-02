@@ -1,13 +1,14 @@
+import { Ingredient } from "./ingredient.model";
+
 export class Recipe {
     
-    id: number 
     title: string
     thumbnail: string
-    ingredients: {
-        name: string
-    }[]
+    ingredients: Ingredient[]
 
-    constructor(obj) {
-        Object.assign(this,obj)
+    constructor(obj: Recipe) {
+        this.title = obj.title;
+        this.thumbnail = obj.thumbnail;
+        this.ingredients = obj.ingredients
     }
 }
